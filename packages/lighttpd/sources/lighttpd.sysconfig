@@ -1,0 +1,4 @@
+# Configuration file for the lighttpd service
+
+# set this to the location of the lighttpd configuration file
+LIGHTTPD_CONF_FILE=/etc/lighttpd/lighttpd.conf

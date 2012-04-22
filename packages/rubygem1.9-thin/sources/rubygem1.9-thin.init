@@ -1,0 +1,95 @@
+#!/bin/sh
+#
+# thin - this script starts and stops the thin daemon
+#
+# chkconfig:   - 85 15
+# description: thin and fast web server
+# processname: thin
+# config:      /etc/thin/config.yml
+# config:      /etc/sysconfig/thin
+# pidfile:     /var/run/thin/thin.pid
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ "$NETWORKING" = "no" ] && exit 0
+
+thin="/usr/bin/thin"
+prog=$(basename $thin)
+
+thin_CONF_FILE="/etc/thin/config.yml"
+
+[ -f /etc/sysconfig/thin ] && . /etc/sysconfig/thin
+
+lockfile=/var/lock/subsys/thin
+
+start() {
+    [ -x $thin ] || exit 5
+    [ -r $THIN_CONF_FILE ] || exit 6
+    echo -n $"Starting $prog: "
+    daemon $thin --config $THIN_CONF_FILE $THIN_OPTIONS start
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && touch $lockfile
+    return $retval
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    $thin --config $THIN_CONF_FILE stop
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && rm -f $lockfile
+    return $retval
+}
+
+restart() {
+    stop
+    start
+}
+
+reload() {
+    echo -n $"Reloading $prog: "
+    killproc $thin -HUP
+    echo
+}
+
+rh_status() {
+    status $prog
+}
+
+rh_status_q() {
+    rh_status >/dev/null 2>&1
+}
+
+case "$1" in
+    start)
+        rh_status_q && exit 0
+        $1
+        ;;
+    stop)
+        rh_status_q || exit 0
+        $1
+        ;;
+    restart)
+        $1
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        ;;
+    status|status_q)
+        rh_$1
+        ;;
+    condrestart|try-restart)
+        rh_status_q || exit 7
+        restart
+	    ;;
+    *)
+        echo $"Usage: $0 {start|stop|reload|status|force-reload|restart}"
+        exit 2
+esac

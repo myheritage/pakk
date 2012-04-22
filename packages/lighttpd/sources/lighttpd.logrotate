@@ -1,0 +1,11 @@
+/var/log/lighttpd/*log {
+    daily
+    rotate 10
+    missingok
+    notifempty
+    compress
+    sharedscripts
+    postrotate
+        [ ! -f /var/run/lighttpd.pid ] || kill -USR1 `cat /var/run/lighttpd.pid`
+    endscript
+}

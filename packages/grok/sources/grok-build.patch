@@ -1,0 +1,51 @@
+diff -uNr grok-1.20110630.1.orig/Makefile grok-1.20110630.1/Makefile
+--- grok-1.20110630.1.orig/Makefile	2011-12-25 01:45:04.000000000 +0000
++++ grok-1.20110630.1/Makefile	2011-12-25 01:55:07.000000000 +0000
+@@ -5,25 +5,10 @@
+ 
+ FORCE_FLEX?=0
+ 
+-ifeq ($(PLATFORM), FreeBSD)
+-PREFIX?=/usr/local
+-else
+ PREFIX?=/usr
+-endif
+-
+-ifeq ($(PLATFORM), Darwin)
+-LIBSUFFIX=dylib
+-else
+ LIBSUFFIX=so
+-endif
+-
+-# On FreeBSD, you may want to set GPERF=/usr/local/bin/gperf since
+-# the base system gperf is too old.
+-ifeq ($(PLATFORM), FreeBSD)
+-GPERF?=/usr/local/bin/gperf
+-else
+ GPERF?=/usr/bin/gperf
+-endif
++PCRE_CONFIG?=pcre-config
+ 
+ # For linux, we need libdl for dlopen()
+ # On FreeBSD, comment this line out.
+@@ -42,17 +27,15 @@
+ #LDFLAGS+=-g
+ 
+ CFLAGS+=-pipe -fPIC -I. -O2
+-LDFLAGS+=-lpcre -levent -rdynamic -ltokyocabinet
++CFLAGS+=$(shell sh $(PCRE_CONFIG) --cflags)
++LDFLAGS+=$(shell sh $(PCRE_CONFIG) --libs)
++LDFLAGS+=-levent -rdynamic -ltokyocabinet
+ 
+ LIBSUFFIX=$(shell sh $(BASE)/platform.sh libsuffix)
+ VERLIBSUFFIX=$(shell sh $(BASE)/platform.sh libsuffix $(MAJOR))
+ DYNLIBFLAG=$(shell sh $(BASE)/platform.sh dynlibflag)
+ LIBNAMEFLAG=$(shell sh $(BASE)/platform.sh libnameflag $(MAJOR) $(INSTALLLIB))
+ 
+-# Sane includes
+-CFLAGS+=-I/usr/local/include
+-LDFLAGS+=-L/usr/local/lib
+-
+ # Platform so we know what to dlopen
+ CFLAGS+=-DPLATFORM_$(PLATFORM)
+ # Uncomment to totally disable logging features

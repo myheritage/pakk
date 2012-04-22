@@ -1,0 +1,15 @@
+diff -uNr ruby-1.9.2-p136.orig/lib/rubygems/defaults.rb ruby-1.9.2-p136/lib/rubygems/defaults.rb
+--- ruby-1.9.2-p136.orig/lib/rubygems/defaults.rb	2010-04-22 08:24:42.000000000 +0000
++++ ruby-1.9.2-p136/lib/rubygems/defaults.rb	2010-12-27 08:56:03.000000000 +0000
+@@ -41,9 +41,9 @@
+ 
+   def self.default_path
+     if File.exist? Gem.user_home then
+-      [user_dir, default_dir]
++      [user_dir, default_dir, ConfigMap[:sitelibdir]]
+     else
+-      [default_dir]
++      [default_dir, ConfigMap[:sitelibdir]]
+     end
+   end
+ 

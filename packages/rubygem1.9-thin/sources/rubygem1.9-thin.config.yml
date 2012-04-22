@@ -1,0 +1,10 @@
+--- 
+environment: production
+daemonize: true
+user: thin
+group: thin
+address: 127.0.0.1
+port: 8080
+timeout: 60
+pid: /var/run/thin/thin.pid
+log: /var/log/thin/thin.log

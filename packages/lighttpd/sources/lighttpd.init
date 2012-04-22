@@ -1,0 +1,106 @@
+#!/bin/sh
+#
+# lighttpd - this script starts and stops the lighttpd daemon
+#
+# chkconfig:   - 85 15
+# description: Lighttpd is a secure, fast, compliant
+#              and flexible web server
+# processname: lighttpd
+# config:      /etc/lighttpd/lighttpd.conf
+# config:      /etc/sysconfig/lighttpd
+# pidfile:     /var/run/lighttpd.pid
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ "$NETWORKING" = "no" ] && exit 0
+
+lighttpd="/usr/sbin/lighttpd"
+prog=$(basename $lighttpd)
+
+LIGHTTPD_CONF_FILE="/etc/lighttpd/lighttpd.conf"
+
+[ -f /etc/sysconfig/lighttpd ] && . /etc/sysconfig/lighttpd
+
+lockfile=/var/lock/subsys/lighttpd
+
+start() {
+    [ -x $lighttpd ] || exit 5
+    [ -f $LIGHTTPD_CONF_FILE ] || exit 6
+    echo -n $"Starting $prog: "
+    daemon $lighttpd -f $LIGHTTPD_CONF_FILE
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && touch $lockfile
+    return $retval
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && rm -f $lockfile
+    return $retval
+}
+
+restart() {
+    configtest_q || configtest || return 6
+    stop
+    start
+}
+
+reload() {
+    configtest_q || configtest || return 6
+    echo -n $"Reloading $prog: "
+    killproc $lighttpd -HUP
+    echo
+}
+
+configtest() {
+  $lighttpd -t -f $LIGHTTPD_CONF_FILE
+}
+
+configtest_q() {
+    configtest >/dev/null 2>&1
+}
+
+rh_status() {
+    status $prog
+}
+
+rh_status_q() {
+    rh_status >/dev/null 2>&1
+}
+
+case "$1" in
+    start)
+        rh_status_q && exit 0
+        $1
+        ;;
+    stop)
+        rh_status_q || exit 0
+        $1
+        ;;
+    restart|configtest)
+        $1
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        ;;
+    status|status_q)
+        rh_$1
+        ;;
+    condrestart|try-restart)
+        rh_status_q || exit 7
+        restart
+	    ;;
+    *)
+        echo $"Usage: $0 {start|stop|reload|configtest|status|restart}"
+        exit 2
+esac

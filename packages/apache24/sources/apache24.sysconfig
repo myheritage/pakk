@@ -1,0 +1,2 @@
+PIDFILE="/var/run/httpd.pid"
+OPTIONS=

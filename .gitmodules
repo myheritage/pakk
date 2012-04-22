@@ -1,0 +1,6 @@
+[submodule "packages/apr/sources"]
+	path = packages/apr/sources
+	url = git://pkgs.fedoraproject.org/apr.git
+[submodule "packages/apr-util/sources"]
+	path = packages/apr-util/sources
+	url = git://pkgs.fedoraproject.org/apr-util.git

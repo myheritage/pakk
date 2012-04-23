@@ -10,7 +10,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           nginx
-Version:        1.0.15
+Version:        1.2.0
 Release:        1%{?dist}
 Summary:        A HTTP and reverse proxy server
 
@@ -112,7 +112,7 @@ rm -rf %{buildroot}{_localstatedir}/run
 rm -rf %{buildroot}
 
 
-#-------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 %pre
 if [ $1 == 1 ]; then
   /usr/sbin/useradd -c %{name} -s /sbin/nologin -r -M -d %{basedir} %{name} \
@@ -136,7 +136,7 @@ if [ $1 == 2 ]; then
 fi
 
 
-#-------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
 %doc CHANGES CHANGES.ru LICENSE README
@@ -156,6 +156,9 @@ fi
 
 #-----------------------------------------------------------------------------
 %changelog
+* Mon Apr 23 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.2.0-1%{?dist}
+- New upstream version
+
 * Tue Apr 17 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.0.15-1%{?dist}
 - New upstream version
 

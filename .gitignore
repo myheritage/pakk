@@ -3,3 +3,4 @@
 *.tar.bz2
 *.tbz2
 *.gem
+packages/nmon/sources/*.c

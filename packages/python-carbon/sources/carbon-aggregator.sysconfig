@@ -1,0 +1,3 @@
+# CONFIG="/etc/carbon/carbon.conf"
+# LOGDIR="/var/log/carbon"
+# PIDFILE="/var/run/carbon-aggregator.pid"

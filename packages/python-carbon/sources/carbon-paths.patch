@@ -1,0 +1,59 @@
+diff -uNr carbon-0.9.9.orig/conf/carbon.conf.example carbon-0.9.9/conf/carbon.conf.example
+--- carbon-0.9.9.orig/conf/carbon.conf.example	2011-10-05 07:17:52.000000000 +0000
++++ carbon-0.9.9/conf/carbon.conf.example	2012-04-23 16:57:32.934536054 +0000
+@@ -11,29 +11,18 @@
+ #   GRAPHITE_STORAGE_DIR - Storage directory for whipser/rrd/log/pid files.
+ #                          Defaults to $GRAPHITE_ROOT/storage/
+ #
+-# To change other directory paths, add settings to this file. The following
+-# configuration variables are available with these default values:
+-#
+-#   STORAGE_DIR    = $GRAPHITE_STORAGE_DIR
+-#   LOCAL_DATA_DIR = STORAGE_DIR/whisper/
+-#   WHITELISTS_DIR = STORAGE_DIR/lists/
+-#   CONF_DIR       = STORAGE_DIR/conf/
+-#   LOG_DIR        = STORAGE_DIR/log/
+-#   PID_DIR        = STORAGE_DIR/
+-#
+-# For FHS style directory structures, use:
+-#
+-#   STORAGE_DIR    = /var/lib/carbon/
+-#   CONF_DIR       = /etc/carbon/
+-#   LOG_DIR        = /var/log/carbon/
+-#   PID_DIR        = /var/run/
+-#
+-#LOCAL_DATA_DIR = /opt/graphite/storage/whisper/
++
++CONF_DIR       = /etc/carbon/
++LOG_DIR        = /var/log/carbon/
++PID_DIR        = /var/run/
++STORAGE_DIR    = /var/lib/carbon/
++LOCAL_DATA_DIR = /var/lib/carbon/whisper/
++WHITELISTS_DIR = /var/lib/carbon/lists/
+ 
+ # Specify the user to drop privileges to
+ # If this is blank carbon runs as the user that invokes it
+ # This user must have write access to the local data directory
+-USER =
++USER = carbon
+ 
+ # Limit the size of the cache to avoid swapping or becoming CPU bound.
+ # Sorts and serving cache queries gets more expensive as the cache grows.
+@@ -139,6 +128,8 @@
+ 
+ 
+ [relay]
++USER = carbon
++
+ LINE_RECEIVER_INTERFACE = 0.0.0.0
+ LINE_RECEIVER_PORT = 2013
+ PICKLE_RECEIVER_INTERFACE = 0.0.0.0
+@@ -182,6 +173,8 @@
+ 
+ 
+ [aggregator]
++USER = carbon
++
+ LINE_RECEIVER_INTERFACE = 0.0.0.0
+ LINE_RECEIVER_PORT = 2023
+ 

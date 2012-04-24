@@ -99,6 +99,7 @@ sed -i -e '1d' %{buildroot}%{_libdir}/%{name}/tsung_plotter/tsung.py
 
 iconv -f ISO-8859-1 -t UTF-8 CONTRIBUTORS > CONTRIBUTORS.utf8 && \
   mv CONTRIBUTORS.utf8 CONTRIBUTORS
+rm -f examples/*.in examples/\*.xml
 
 
 #-----------------------------------------------------------------------------
@@ -109,7 +110,7 @@ rm -rf %{buildroot}
 #-----------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc CHANGES CONTRIBUTORS COPYING README
+%doc CHANGES CONTRIBUTORS COPYING README examples
 %{_bindir}/%{name}
 %{_bindir}/%{name}-recorder
 %{_bindir}/log2tsung.pl

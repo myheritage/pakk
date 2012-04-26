@@ -23,6 +23,7 @@ BuildArch:      noarch
 BuildRequires:  python
 
 Requires:       Django
+Requires:       dejavu-sans-mono-fonts
 Requires:       django-tagging
 Requires:       initscripts
 Requires:       pycairo
@@ -66,13 +67,22 @@ for file in dashboard.conf graphTemplates.conf; do
   install -D -p -m 0644 conf/${file}.example \
     %{buildroot}%{_sysconfdir}/%{name}/${file}
 done
-# the local_settings.py.example file should be moved to /etc, and symlinked,
-# but if we do so the local_settings.py{c,o} also end up in /etc
+
+pushd %{buildroot}%{python_sitelib}/graphite
+  mv local_settings.py{.example,}
+  sed -i -e '1d' \
+    manage.py \
+    thirdparty/pytz/tzfile.py
+popd
 
 install -D -p -m 0755 conf/graphite.wsgi.example \
   %{buildroot}%{_datadir}/%{name}/%{name}.wsgi
 
 mv %{buildroot}%{_prefix}/webapp %{buildroot}%{_datadir}/%{name}
+pushd %{buildroot}%{_datadir}/%{name}
+  chmod 644 graphite-web.wsgi
+  find . -name \*.js -exec chmod 644 {} \;
+popd
 
 mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}
 mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
@@ -104,6 +114,7 @@ chown %{name}:%{name} %{_localstatedir}/lib/%{name}/graphite.db
 %config(noreplace) %{_sysconfdir}/%{name}/*
 %{_bindir}/*
 %{python_sitelib}/*
+%config(noreplace) %{python_sitelib}/graphite/local_settings.py
 %{_datadir}/%{name}
 %attr(-, %{name}, %{name}) %{_localstatedir}/lib/%{name}
 %dir %attr(-, %{name}, %{name}) %{_localstatedir}/log/%{name}

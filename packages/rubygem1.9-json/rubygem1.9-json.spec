@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-json
-Version:        1.6.6
+Version:        1.7.0
 Release:        1%{?dist}
 Summary:        This is a JSON implementation as a Ruby extension in C
 
@@ -96,6 +96,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Apr 28 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.7.0-1%{?dist}
+- New upstream version
+
 * Tue Mar 27 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.6.6-1%{?dist}
 - New upstream version
 

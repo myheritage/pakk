@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-unicorn
-Version:        4.3.0
+Version:        4.3.1
 Release:        1%{?dist}
 Summary:        Rack HTTP server for fast clients and Unix (rubygem)
 
@@ -202,6 +202,9 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Apr 29 2012 Eric-Olivier Lamey <pakk@96b.it> - 4.3.1-1%{?dist}
+- New upstream version
+
 * Thu Apr 19 2012 Eric-Olivier Lamey <pakk@96b.it> - 4.3.0-1%{?dist}
 - New upstream version
 

@@ -1,25 +1,37 @@
 #-----------------------------------------------------------------------------
-# collectd.spec
+# collectd5.spec
+#
+# files overlapping with EPEL's package:
+# - %{_libdir}/libcollectdclient*
+# - %{_libdir}/pkgconfig/libcollectdclient
+# - %{_datadir}/perl5/vendor_perl/Collectd*
 #-----------------------------------------------------------------------------
+
+%global upstream_name collectd
+%global plugindir     %{_libdir}/%{name}
 
 %if 0%{?rhel} <= 5
 %define _without_yajl 1
 %endif
 
+
 #-----------------------------------------------------------------------------
 # Main package
 #-----------------------------------------------------------------------------
-Name:           collectd
+Name:           collectd5
 Version:        5.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Statistics collection daemon for filling RRD files
 
 Group:          System Environment/Daemons
 License:        GPLv2
 URL:            http://collectd.org
-Source0:        http://collectd.org/files/%{name}-%{version}.tar.bz2
+Source0:        http://collectd.org/files/%{upstream_name}-%{version}.tar.bz2
 Source1:        %{name}-collection3.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n) 
+
+Conflicts:      collectd > 5.0.0, collectd <= 5.1.0
+Obsoletes:      collectd > 5.0.0, collectd <= 5.1.0
 
 BuildRequires:  curl-devel
 %if 0%{?rhel} >= 6
@@ -188,16 +200,16 @@ This plugin for collectd provides email notification support.
 
 
 #-----------------------------------------------------------------------------
-# perl-Collectd package
+# perl-Collectd5 package
 #-----------------------------------------------------------------------------
-%package -n perl-Collectd
+%package -n perl-Collectd5
 Summary:        Perl bindings for collectd
 Group:          System Environment/Daemons
 
 Requires:       %{name} = %{version}
 Requires:       perl(:MODULE_COMPAT_%(eval "`%{__perl} -V:version`"; echo $version))
 
-%description -n perl-Collectd
+%description -n perl-Collectd5
 This package contains Perl bindings and plugin for collectd.
 
 
@@ -336,16 +348,27 @@ by collectd.
 
 #-----------------------------------------------------------------------------
 %prep
-%setup -q
+%setup -q -n %{upstream_name}-%{version}
+
+sed -i \
+  -e 's|OpenIPMIpthread|OpenIPMI|g' \
+  -e "s|PACKAGE_NAME='%{upstream_name}'|PACKAGE_NAME='%{name}'|g" \
+  configure
+
 sed -i -e 's|-Werror||g' Makefile.in */Makefile.in
-sed -i -e 's|OpenIPMIpthread|OpenIPMI|g' configure
+sed -i -e 's|(sysconfdir)/%{upstream_name}.conf|(sysconfdir)/${PACKAGE_NAME}.conf|g' \
+  src/Makefile.in
+sed -i -e 's|/@PACKAGE@|/@PACKAGE_NAME@|g' \
+  bindings/java/Makefile.in \
+  src/Makefile.in \
+  src/libcollectdclient/Makefile.in
 
 
 #-----------------------------------------------------------------------------
 %build
-
 export CFLAGS="%{optflags} -DLT_LAZY_OR_NOW='RTLD_LAZY|RTLD_GLOBAL'"
 %configure \
+  --program-transform-name='s|%{upstream_name}|%{name}|g' \
 %if 0%{?rhel} >= 6
   --with-libiptc \
 %endif
@@ -475,7 +498,6 @@ export CFLAGS="%{optflags} -DLT_LAZY_OR_NOW='RTLD_LAZY|RTLD_GLOBAL'"
   --enable-write_mongodb \
   --enable-write_redis
 
-
 %{__make} %{?_smp_mflags}
 
 
@@ -485,31 +507,31 @@ rm -rf %{buildroot}
 rm -rf contrib/SpamAssassin
 make install DESTDIR=%{buildroot}
 
-chmod 644 %{buildroot}%{_sysconfdir}/collectd.conf
+chmod 644 %{buildroot}%{_sysconfdir}/%{name}.conf
 sed -i \
-  -e 's|^#BaseDir.*|BaseDir     "/var/lib/collectd"|g' \
-  -e 's|^#PIDFile.*|PIDFile     "/var/run/collectd.pid"|g' \
-  %{buildroot}%{_sysconfdir}/collectd.conf
-echo 'Include "/etc/collectd.d/*.conf"' >> %{buildroot}%{_sysconfdir}/collectd.conf
+  -e 's|^#BaseDir.*|BaseDir     "/var/lib/%{name}"|g' \
+  -e 's|^#PIDFile.*|PIDFile     "/var/run/%{name}.pid"|g' \
+  %{buildroot}%{_sysconfdir}/%{name}.conf
 
-install -Dp -m0755 contrib/fedora/init.d-collectd %{buildroot}%{_initrddir}/collectd
+install -Dp -m0755 contrib/fedora/init.d-collectd %{buildroot}%{_initrddir}/%{name}
+sed -i -e 's|%{upstream_name}|%{name}|g' %{buildroot}%{_initrddir}/%{name}
 
-install -d -m0755 %{buildroot}%{_libdir}/collectd/python
-install -d -m0755 %{buildroot}%{_localstatedir}/lib/collectd/
-install -d -m0755 %{buildroot}%{_datadir}/collectd/collection3/
+install -d -m0755 %{buildroot}%{plugindir}/python
+install -d -m0755 %{buildroot}%{_localstatedir}/lib/%{name}/
+install -d -m0755 %{buildroot}%{_datadir}/%{name}/collection3/
 
-echo -e "jmx_memory\t\tvalue:GAUGE:0:U" >> %{buildroot}/%{_datadir}/collectd/types.db
+echo -e "jmx_memory\t\tvalue:GAUGE:0:U" >> %{buildroot}/%{_datadir}/%{name}/types.db
 
 find %{buildroot} -name .packlist -exec rm {} \;
 find %{buildroot} -name perllocal.pod -exec rm {} \;
-rm -f %{buildroot}%{_libdir}/{collectd/,}*.la %{buildroot}/%{_mandir}/man5/collectd-email.5*
-rm %{buildroot}%{_datadir}/collectd/postgresql_default.conf
+rm -f %{buildroot}%{_libdir}/{%{name}/,}*.la
+rm %{buildroot}%{_datadir}/%{name}/postgresql_default.conf
 
 mkdir apache-config
 install -Dp -m0644 %{SOURCE1} apache-config
-cp -ad contrib/collection3/* %{buildroot}%{_datadir}/collectd/collection3/
-chmod +x %{buildroot}%{_datadir}/collectd/collection3/bin/*.cgi
-rm -f %{buildroot}%{_datadir}/collectd/collection3/{bin,etc,lib,share}/.htaccess
+cp -ad contrib/collection3/* %{buildroot}%{_datadir}/%{name}/collection3/
+chmod +x %{buildroot}%{_datadir}/%{name}/collection3/bin/*.cgi
+rm -f %{buildroot}%{_datadir}/%{name}/collection3/{bin,etc,lib,share}/.htaccess
 
 mkdir perl-examples
 find contrib -name '*.p[lm]' -exec mv {} perl-examples/ \;
@@ -541,132 +563,136 @@ fi
 %files
 %defattr(-, root, root, -)
 %doc AUTHORS ChangeLog COPYING INSTALL README
-%config(noreplace) %{_sysconfdir}/collectd.conf
-%{_initrddir}/collectd
+%config(noreplace) %{_sysconfdir}/%{name}.conf
+%{_initrddir}/%{name}
 %{_sbindir}/*
 %{_bindir}/*
-%dir %{_localstatedir}/lib/collectd
-%dir %{_libdir}/collectd
-%dir %{_libdir}/collectd/python
-%{_libdir}/collectd/*.so
-%exclude %{_libdir}/collectd/dbi.so
-%exclude %{_libdir}/collectd/ipmi.so
-%exclude %{_libdir}/collectd/java.so
-%exclude %{_libdir}/collectd/libvirt.so
-%exclude %{_libdir}/collectd/memcachec.so
-%exclude %{_libdir}/collectd/mysql.so
-%exclude %{_libdir}/collectd/notify_email.so
-%exclude %{_libdir}/collectd/perl.so
-%exclude %{_libdir}/collectd/ping.so
-%exclude %{_libdir}/collectd/postgresql.so
-%exclude %{_libdir}/collectd/redis.so
-%exclude %{_libdir}/collectd/rrdtool.so
-%exclude %{_libdir}/collectd/sensors.so
-%exclude %{_libdir}/collectd/snmp.so
-%exclude %{_libdir}/collectd/varnish.so
-%exclude %{_libdir}/collectd/write_mongodb.so
-%exclude %{_libdir}/collectd/write_redis.so
-%{_datadir}/collectd/types.db
+%dir %{_localstatedir}/lib/%{name}
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/python
+%{_libdir}/%{name}/*.so
+%exclude %{plugindir}/dbi.so
+%exclude %{plugindir}/ipmi.so
+%exclude %{plugindir}/java.so
+%exclude %{plugindir}/libvirt.so
+%exclude %{plugindir}/memcachec.so
+%exclude %{plugindir}/mysql.so
+%exclude %{plugindir}/notify_email.so
+%exclude %{plugindir}/perl.so
+%exclude %{plugindir}/ping.so
+%exclude %{plugindir}/postgresql.so
+%exclude %{plugindir}/redis.so
+%exclude %{plugindir}/rrdtool.so
+%exclude %{plugindir}/sensors.so
+%exclude %{plugindir}/snmp.so
+%exclude %{plugindir}/varnish.so
+%exclude %{plugindir}/write_mongodb.so
+%exclude %{plugindir}/write_redis.so
+%{_datadir}/%{name}/types.db
 %{_libdir}/*.so.*
-%doc %{_mandir}/man1/collectd.1*
-%doc %{_mandir}/man1/collectdctl.1*
-%doc %{_mandir}/man1/collectd-nagios.1*
-%doc %{_mandir}/man1/collectdmon.1*
-%doc %{_mandir}/man5/collectd.conf.5*
-%doc %{_mandir}/man5/collectd-exec.5*
-%doc %{_mandir}/man5/collectd-python.5*
-%doc %{_mandir}/man5/collectd-threshold.5*
-%doc %{_mandir}/man5/collectd-unixsock.5*
+%doc %{_mandir}/man1/%{name}.1*
+%doc %{_mandir}/man1/%{name}ctl.1*
+%doc %{_mandir}/man1/%{name}-nagios.1*
+%doc %{_mandir}/man1/%{name}mon.1*
+%doc %{_mandir}/man5/%{name}.conf.5*
+%doc %{_mandir}/man5/%{name}-email.5*
+%doc %{_mandir}/man5/%{name}-exec.5*
+%doc %{_mandir}/man5/%{name}-python.5*
+%doc %{_mandir}/man5/%{name}-threshold.5*
+%doc %{_mandir}/man5/%{name}-unixsock.5*
 %doc %{_mandir}/man5/types.db.5*
 
 %files dbi
 %defattr(-, root, root, -)
-%{_libdir}/collectd/dbi.so
+%{plugindir}/dbi.so
 
 %files devel
 %defattr(-, root, root, -)
-%{_includedir}/collectd
+%{_includedir}/%{name}
 %{_libdir}/libcollectdclient.so
 %{_libdir}/pkgconfig/*.pc
 
 %files ipmi
 %defattr(-, root, root, -)
-%{_libdir}/collectd/ipmi.so
+%{plugindir}/ipmi.so
 
 %files java
 %defattr(-, root, root, -)
-%{_libdir}/collectd/java.so
-%{_datadir}/collectd/java
-%doc %{_mandir}/man5/collectd-java.5*
+%{plugindir}/java.so
+%{_datadir}/%{name}/java
+%doc %{_mandir}/man5/%{name}-java.5*
 
 %files libvirt
 %defattr(-, root, root, -)
-%{_libdir}/collectd/libvirt.so
+%{plugindir}/libvirt.so
 
 %files memcachec
 %defattr(-, root, root, -)
-%{_libdir}/collectd/memcachec.so
+%{plugindir}/memcachec.so
 
 %files mongodb
 %defattr(-, root, root, -)
-%{_libdir}/collectd/write_mongodb.so
+%{plugindir}/write_mongodb.so
 
 %files mysql
 %defattr(-, root, root, -)
-%{_libdir}/collectd/mysql.so
+%{plugindir}/mysql.so
 
 %files notify_email
 %defattr(-, root, root, -)
-%{_libdir}/collectd/notify_email.so
+%{plugindir}/notify_email.so
 
-%files -n perl-Collectd
+%files -n perl-Collectd5
 %defattr(-, root, root, -)
 %doc perl-examples
-%{_libdir}/collectd/perl.so
+%{plugindir}/perl.so
 %{perl_vendorlib}/Collectd.pm
 %{perl_vendorlib}/Collectd/
-%doc %{_mandir}/man5/collectd-perl.5*
+%doc %{_mandir}/man5/%{name}-perl.5*
 %doc %{_mandir}/man3/Collectd::Unixsock.3pm*
 
 %files ping
 %defattr(-, root, root, -)
-%{_libdir}/collectd/ping.so
+%{plugindir}/ping.so
 
 %files postgresql
 %defattr(-, root, root, -)
-%{_libdir}/collectd/postgresql.so
+%{plugindir}/postgresql.so
 %doc src/postgresql_default.conf
 
 %files redis
 %defattr(-, root, root, -)
-%{_libdir}/collectd/redis.so
-%{_libdir}/collectd/write_redis.so
+%{plugindir}/redis.so
+%{plugindir}/write_redis.so
 
 %files rrdtool
 %defattr(-, root, root, -)
-%{_libdir}/collectd/rrdtool.so
+%{plugindir}/rrdtool.so
 
 %files sensors
 %defattr(-, root, root, -)
-%{_libdir}/collectd/sensors.so
+%{plugindir}/sensors.so
 
 %files snmp
 %defattr(-, root, root, -)
-%{_libdir}/collectd/snmp.so
-%doc %{_mandir}/man5/collectd-snmp.5*
+%{plugindir}/snmp.so
+%doc %{_mandir}/man5/%{name}-snmp.5*
 
 %files varnish
 %defattr(-, root, root, -)
-%{_libdir}/collectd/varnish.so
+%{plugindir}/varnish.so
 
 %files web
 %defattr(-, root, root, -)
 %doc apache-config
-%{_datadir}/collectd/collection3/
+%{_datadir}/%{name}/collection3/
 
 
 #-----------------------------------------------------------------------------
 %changelog
+* Mon Apr 30 2012 Eric-Olivier Lamey <pakk@96b.it> - 5.1.0-2%{?dist}
+- Renamed package to collectd5
+
 * Fri Apr 6 2012 Eric-Olivier Lamey <pakk@96b.it> - 5.1.0-1%{?dist}
 - New upstream version
 - Enabled ethstat, graphite and mongodb plugins

@@ -10,7 +10,7 @@
 #-----------------------------------------------------------------------------
 Name:           collectd-librato
 Version:        0.0.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        collectd plugin that publishes collectd values to Librato Metrics
 
 Group:          System Environment/Daemons
@@ -21,7 +21,7 @@ Source1:        %{name}.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
-Requires:       collectd >= 5.0.3
+Requires:       collectd5
 
 %description
 collectd-librato is a collectd plugin that publishes collectd values to
@@ -53,7 +53,7 @@ install -p -D -m 0644 lib/collectd-librato.py \
 rm -rf %{buildroot}
 
 
-#-------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
 %doc LICENSE README.md
@@ -63,5 +63,8 @@ rm -rf %{buildroot}
 
 #-----------------------------------------------------------------------------
 %changelog
+* Tue May 1 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.0.5-2%{?dist}
+- collectd in now collectd5
+
 * Wed Mar 28 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.0.5-1%{?dist}
 - Initial package creation

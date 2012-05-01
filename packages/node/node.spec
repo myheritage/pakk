@@ -7,7 +7,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           node
-Version:        0.6.15
+Version:        0.6.16
 Release:        1%{?dist}
 Summary:        Evented I/O for V8 JavaScript
 
@@ -105,6 +105,9 @@ rm -rf %{buildroot}
 
 #-----------------------------------------------------------------------------
 %changelog
+* Mon Apr 30 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.6.16-1%{?dist}
+- New upstream version
+
 * Tue Apr 10 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.6.15-1%{?dist}
 - New upstream version
 

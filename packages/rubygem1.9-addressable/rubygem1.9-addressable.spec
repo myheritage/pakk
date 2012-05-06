@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-addressable
-Version:        2.2.7
+Version:        2.2.8
 Release:        1%{?dist}
 Summary:        URI Implementation
 
@@ -55,7 +55,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf Rakefile spec tasks website
+  rm -rf Gemfile* Rakefile spec tasks website
 popd
 
 
@@ -67,8 +67,8 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG.md
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE.txt
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
@@ -80,6 +80,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Thu May 3 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.2.8-1%{?dist}
+- New upstream version
+
 * Thu Feb 16 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.2.7-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-json
-Version:        1.7.0
+Version:        1.7.1
 Release:        1%{?dist}
 Summary:        This is a JSON implementation as a Ruby extension in C
 
@@ -58,16 +58,10 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf ext/json/ext/{fbuffer,generator,parser} lib/json/ext
-  strip ext/json/ext/json/ext/*.so
+  rm -rf ext lib/json/ext/.keep
+  strip lib/json/ext/*.so
   rm -rf .??* COPYING-json-jruby README-json-jruby.markdown Gemfile Rakefile \
     benchmarks data diagrams install.rb java *.gemspec tests tools
-popd
-
-pushd %{buildroot}%{ruby_sitelib}
-  sed -i -e 's|%{buildroot}||g' \
-    doc/%{gemname}-%{version}/rdoc/ext/json/ext/generator/Makefile.html \
-    doc/%{gemname}-%{version}/rdoc/ext/json/ext/parser/Makefile.html
 popd
 
 
@@ -86,7 +80,6 @@ rm -rf %{buildroot}
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/TODO
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/VERSION
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
-%{ruby_sitelib}/gems/%{gemname}-%{version}/ext
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
 
@@ -96,6 +89,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon May 7 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.7.1-1%{?dist}
+- New upstream version
+
 * Sat Apr 28 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.7.0-1%{?dist}
 - New upstream version
 

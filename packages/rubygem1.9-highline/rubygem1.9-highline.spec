@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-highline
-Version:        1.6.11
+Version:        1.6.12
 Release:        1%{?dist}
 Summary:        High-level command-line IO library
 
@@ -74,7 +74,7 @@ rm -rf %{buildroot}
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/COPYING
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.rdoc
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
@@ -87,6 +87,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed May 9 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.6.12-1%{?dist}
+- New upstream version
+
 * Tue Jan 31 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.6.11-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-raindrops
-Version:        0.7.0
+Version:        0.8.1
 Release:        1%{?dist}
 Summary:        Real-time stats toolkit for Rack HTTP servers
 
@@ -63,6 +63,7 @@ rm -rf %{buildroot}%{ruby_sitelib}/cache
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
   rm -rf .??* GIT* GNUmakefile Gemfile Rakefile ext pkg.mk setup.rb test *.gemspec
   strip lib/*.so
+  chmod 644 NEWS ChangeLog
 popd
 
 
@@ -92,5 +93,8 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat May 12 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.8.1-1%{?dist}
+- New upstream version
+
 * Sat Jul 9 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.7.0-1%{?dist}
 - Initial package creation

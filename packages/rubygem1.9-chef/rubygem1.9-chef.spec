@@ -14,7 +14,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-chef
-Version:        0.10.8
+Version:        0.10.10
 Release:        1%{?dist}
 Summary:        Configuration management tool (rubygem)
 
@@ -36,19 +36,21 @@ Requires:       initscripts
 Requires:       ruby1.9
 Requires:       rubygem1.9-bunny >= 0.6.0
 Requires:       rubygem1.9-erubis
-Requires:       rubygem1.9-highline
+Requires:       rubygem1.9-highline >= 1.6.9
 Requires:       rubygem1.9-json <= 1.6.1
-Requires:       rubygem1.9-net-ssh <= 2.1.4
-Requires:       rubygem1.9-net-ssh-multi >= 1.0.0
+Requires:       rubygem1.9-net-ssh = 2.2.2
+Requires:       rubygem1.9-net-ssh-multi >= 1.1
 Requires:       rubygem1.9-mixlib-authentication >= 1.1.0
 Requires:       rubygem1.9-mixlib-cli >= 1.1.0
 Requires:       rubygem1.9-mixlib-config >= 1.1.2
 Requires:       rubygem1.9-mixlib-log >= 1.3.0
+Requires:       rubygem1.9-mixlib-shellout >= 1.0.0
 Requires:       rubygem1.9-moneta
 Requires:       rubygem1.9-ohai >= 0.6.0
 Requires:       rubygem1.9-rest-client < 1.7.0
 Requires:       rubygem1.9-treetop >= 1.4.9
 Requires:       rubygem1.9-uuidtools
+Requires:       rubygem1.9-yajl >= 1.1.0
 Requires:       shadow-utils
 
 %description
@@ -215,6 +217,9 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat May 12 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.10-1%{?dist}
+- New upstream version
+
 * Tue Jan 3 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.8-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-chef-server-api
-Version:        0.10.8
+Version:        0.10.10
 Release:        1%{?dist}
 Summary:        Merb slice providing REST API for Chef client access (rubygem)
 
@@ -159,6 +159,9 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat May 12 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.10-1%{?dist}
+- New upstream version
+
 * Tue Jan 3 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.8-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-chef-expander
-Version:        0.10.8
+Version:        0.10.10
 Release:        1%{?dist}
 Summary:        Replaces the former chef-solr-indexer daemon (rubygem)
 
@@ -42,7 +42,7 @@ Requires:       rubygem1.9-highline <= 1.6.9
 Requires:       rubygem1.9-fast_xs <= 0.7.3
 Requires:       rubygem1.9-mixlib-log >= 1.2.0
 Requires:       rubygem1.9-uuidtools >= 2.1.1
-Requires:       rubygem1.9-yajl <= 0.7.9
+Requires:       rubygem1.9-yajl >= 1.1.0
 
 %description
 Chef Expander replaces the chef-solr-indexer daemon that was included with
@@ -160,5 +160,8 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat May 12 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.10-1%{?dist}
+- New upstream version
+
 * Tue Jan 3 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.8-1%{?dist}
 - Initial package creation

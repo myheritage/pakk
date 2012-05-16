@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-chef-server-webui
-Version:        0.10.8
+Version:        0.10.10
 Release:        1%{?dist}
 Summary:        Merb app slice providing a web interface for Chef (rubygem)
 
@@ -33,7 +33,7 @@ BuildRequires:  ruby1.9-devel
 Requires:       chef-common = %{version}
 Requires:       ruby1.9
 Requires:       rubygem1.9-coderay
-Requires:       rubygem1.9-haml <= 3.0.25
+Requires:       rubygem1.9-haml
 Requires:       rubygem1.9-merb-core >= 1.1.0
 Requires:       rubygem1.9-merb-assets >= 1.1.0
 Requires:       rubygem1.9-merb-helpers >= 1.1.0
@@ -159,6 +159,9 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat May 12 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.10-1%{?dist}
+- New upstream version
+
 * Tue Jan 3 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.8-1%{?dist}
 - New upstream version
 

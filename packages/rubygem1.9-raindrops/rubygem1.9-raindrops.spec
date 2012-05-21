@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-raindrops
-Version:        0.8.1
+Version:        0.9.0
 Release:        1%{?dist}
 Summary:        Real-time stats toolkit for Rack HTTP servers
 
@@ -93,6 +93,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon May 21 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.9.0-1%{?dist}
+- New upstream version
+
 * Sat May 12 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.8.1-1%{?dist}
 - New upstream version
 

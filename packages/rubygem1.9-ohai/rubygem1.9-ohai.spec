@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-ohai
-Version:        0.6.12
+Version:        6.14.0
 Release:        1%{?dist}
 Summary:        Profiles your system and emits JSON
 
@@ -95,6 +95,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Thu May 31 2012 Eric-Olivier Lamey <pakk@96b.it> - 6.14.0-1%{?dist}
+- Updated dependecy on net-ssh (rpm needs ~>)
+
 * Fri Mar 23 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.6.12-1%{?dist}
 - Updated dependecy on net-ssh (rpm needs ~>)
 

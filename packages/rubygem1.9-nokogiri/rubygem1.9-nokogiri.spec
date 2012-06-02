@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-nokogiri
-Version:        1.5.1
+Version:        1.5.3
 Release:        1%{?dist}
 Summary:        Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser
 
@@ -63,7 +63,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .autotest .gemtest Rakefile deps.rip ext tasks test
+  rm -rf .autotest .gemtest Rakefile build_all deps.rip ext tasks test test_all *.ja.rdoc
   strip lib/nokogiri/*.so
 popd
 
@@ -80,9 +80,7 @@ rm -rf %{buildroot}
 %files
 %defattr(-, root, root, -)
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/C_CODING_STYLE.rdoc
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG.ja.rdoc
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG.rdoc
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.ja.rdoc
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.rdoc
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/Manifest.txt
 %{_bindir}/%{gemname}
@@ -99,6 +97,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Jun 2 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.5.3-1%{?dist}
+- New upstream version
+
 * Fri Mar 9 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.5.1-1%{?dist}
 - New upstream version
 

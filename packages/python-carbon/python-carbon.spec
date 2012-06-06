@@ -11,7 +11,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           python-%{upstream_name}
-Version:        0.9.9
+Version:        0.9.10
 Release:        1%{?dist}
 Summary:        Backend data caching and persistence daemon for Graphite
 
@@ -129,5 +129,8 @@ fi
 
 #-----------------------------------------------------------------------------
 %changelog
+* Sat Jun 2 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.9.10-1%{?dist}
+- New upstream version
+
 * Sun Apr 22 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.9.9-1%{?dist}
 - Initial package creation

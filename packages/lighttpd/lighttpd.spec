@@ -9,14 +9,14 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           lighttpd
-Version:        1.4.30
+Version:        1.4.31
 Release:        1%{?dist}
 Summary:        Secure, fast, compliant and flexible web server
 
 Group:          System Environment/Daemons
 License:        BSD
 URL:            http://www.lighttpd.net/
-Source0:        http://download.lighttpd.net/%{name}/releases-1.4.x/%{name}-%{version}.tar.gz
+Source0:        http://download.lighttpd.net/%{name}/releases-1.4.x/%{name}-%{version}.tar.bz2
 Source1:        %{name}.conf
 Source2:        %{name}.init
 Source3:        %{name}.sysconfig
@@ -127,6 +127,9 @@ fi
 
 #-----------------------------------------------------------------------------
 %changelog
+* Fri Jun 1 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.4.31-1%{?dist}
+- New upstream version
+
 * Mon Mar 26 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.4.30-1%{?dist}
 - New upstream version
 

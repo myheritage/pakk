@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mixlib-log
-Version:        1.3.0
+Version:        1.4.1
 Release:        1%{?dist}
 Summary:        Provides a simple mixin for log functionality
 
@@ -53,7 +53,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .gitignore Rakefile features spec
+  rm -rf .??* Rakefile features spec *.gemspec
 popd
 
 
@@ -78,6 +78,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Jun 9 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.4.1-1%{?dist}
+- New upstream version
+
 * Sun Mar 27 2011 Eric-Olivier Lamey <pakk@96b.it> - 1.3.0-1%{?dist}
 - New upstream version
 

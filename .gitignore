@@ -2,5 +2,6 @@
 *.tgz
 *.tar.bz2
 *.tbz2
+*.zip
 *.gem
 packages/nmon/sources/*.c

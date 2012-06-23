@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export LD_PRELOAD="\${LD_PRELOAD} %{_libdir}/nocache.so"
+exec "$@"

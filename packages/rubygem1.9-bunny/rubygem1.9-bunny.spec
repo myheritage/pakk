@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bunny
-Version:        0.7.9
+Version:        0.8.0
 Release:        1%{?dist}
 Summary:        Synchronous Ruby AMQP client
 
@@ -80,6 +80,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed Jun 27 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.8.0-1%{?dist}
+- New upstream version
+
 * Sun Feb 12 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.7.9-1%{?dist}
 - New upstream version
 

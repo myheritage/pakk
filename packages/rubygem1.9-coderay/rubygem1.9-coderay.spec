@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-coderay
-Version:        1.0.6
+Version:        1.0.7
 Release:        1%{?dist}
 Summary:        Fast syntax highlighting for selected languages
 
@@ -71,7 +71,6 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README_INDEX.rdoc
 %{_bindir}/*
 %{ruby_sitelib}/bin/*
@@ -86,6 +85,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed Jun 27 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.0.7-1%{?dist}
+- New upstream version
+
 * Fri Apr 6 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.0.6-1%{?dist}
 - New upstream version
 

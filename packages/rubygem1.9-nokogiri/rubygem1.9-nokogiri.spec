@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-nokogiri
-Version:        1.5.3
+Version:        1.5.5
 Release:        1%{?dist}
 Summary:        Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser
 
@@ -97,6 +97,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed Jun 27 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.5.5-1%{?dist}
+- New upstream version
+
 * Sat Jun 2 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.5.3-1%{?dist}
 - New upstream version
 

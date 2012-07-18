@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-systemu
-Version:        2.5.1
+Version:        2.5.2
 Release:        1%{?dist}
 Summary:        Univeral capture of stdout and stderr and handling of child process pid
 
@@ -79,6 +79,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed Jul 18 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.5.2-1%{?dist}
+- New upstream version
+
 * Wed May 30 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.5.1-1%{?dist}
 - New upstream version
 

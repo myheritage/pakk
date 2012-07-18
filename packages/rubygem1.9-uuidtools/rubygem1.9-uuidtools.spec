@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-uuidtools
-Version:        2.1.2
+Version:        2.1.3
 Release:        2%{?dist}
 Summary:        Simple universally unique ID generation library
 
@@ -55,7 +55,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf Rakefile spec tasks website
+  rm -rf Gemfile* Rakefile spec tasks website
 popd
 
 
@@ -68,8 +68,8 @@ rm -rf %{buildroot}
 %files
 %defattr(-, root, root, -)
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE.txt
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
@@ -80,6 +80,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed Jul 18 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.1.3-2%{?dist}
+- New upstream version
+
 * Sun Mar 6 2011 Eric-Olivier Lamey <pakk@96b.it> - 2.1.2-2%{?dist}
 - Massive rebuild to change pakk's packages requirements
 

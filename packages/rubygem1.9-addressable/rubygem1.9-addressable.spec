@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-addressable
-Version:        2.2.8
+Version:        2.3.1
 Release:        1%{?dist}
 Summary:        URI Implementation
 
@@ -71,6 +71,7 @@ rm -rf %{buildroot}
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE.txt
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
+%{ruby_sitelib}/gems/%{gemname}-%{version}/data
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
 
@@ -80,6 +81,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Jul 22 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.3.1-1%{?dist}
+- New upstream version
+
 * Thu May 3 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.2.8-1%{?dist}
 - New upstream version
 

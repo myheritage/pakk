@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-addressable
-Version:        2.3.1
+Version:        2.3.2
 Release:        1%{?dist}
 Summary:        URI Implementation
 
@@ -81,6 +81,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Aug 25 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.3.2-1%{?dist}
+- New upstream version
+
 * Sun Jul 22 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.3.1-1%{?dist}
 - New upstream version
 

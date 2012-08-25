@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-oj
-Version:        1.3.0
+Version:        1.3.4
 Release:        1%{?dist}
 Summary:        A fast JSON parser and serializer
 
@@ -89,6 +89,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Aug 25 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.3.4-1%{?dist}
+- New upstream version
+
 * Wed Jul 18 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.3.0-1%{?dist}
 - New upstream version
 

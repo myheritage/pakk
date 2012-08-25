@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-sass
-Version:        3.1.12
+Version:        3.2.1
 Release:        1%{?dist}
 Summary:        Extension of CSS3
 
@@ -60,7 +60,6 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  chmod 755 lib/sass/less.rb
   rm -rf .yardopts Rakefile test vendor/fssm/spec
 popd
 
@@ -83,6 +82,7 @@ rm -rf %{buildroot}
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/REVISION
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/VERSION
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/VERSION_DATE
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/VERSION_NAME
 %{_bindir}/*
 %{ruby_sitelib}/bin/*
@@ -101,5 +101,8 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Aug 25 2012 Eric-Olivier Lamey <pakk@96b.it> - 3.2.1-1%{?dist}
+- New upstream version
+
 * Sun Jan 1 2012 Eric-Olivier Lamey <pakk@96b.it> - 3.1.12-1%{?dist}
 - Initial package creation

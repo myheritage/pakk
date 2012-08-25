@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-ffi
-Version:        1.1.0
+Version:        1.1.5
 Release:        1%{?dist}
 Summary:        Ruby extension for programmatically loading dynamic libraries
 
@@ -88,6 +88,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Aug 25 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.1.5-1%{?dist}
+- New upstream version
+
 * Wed Jul 18 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.1.0-1%{?dist}
 - New upstream version
 

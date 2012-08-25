@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-trollop
-Version:        1.16.2
+Version:        2.0
 Release:        1%{?dist}
 Summary:        Commandline option parser for Ruby that just gets out of your way
 
@@ -81,5 +81,8 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Aug 25 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.0-1%{?dist}
+- New upstream version
+
 * Tue Mar 8 2011 Eric-Olivier Lamey <pakk@96b.it> - 1.16.2-1%{?dist}
 - Initial package creation

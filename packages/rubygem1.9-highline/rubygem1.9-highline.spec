@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-highline
-Version:        1.6.13
+Version:        1.6.14
 Release:        1%{?dist}
 Summary:        High-level command-line IO library
 
@@ -87,6 +87,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Aug 26 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.6.14-1%{?dist}
+- New upstream version
+
 * Sat Jun 16 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.6.13-1%{?dist}
 - New upstream version
 

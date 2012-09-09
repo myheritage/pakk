@@ -12,8 +12,8 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-eventmachine
-Version:        0.12.10
-Release:        2%{?dist}
+Version:        1.0.0
+Release:        1%{?dist}
 Summary:        Ruby/EventMachine library
 
 Group:          Development/Languages
@@ -66,7 +66,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .gitignore Rakefile eventmachine.gemspec ext java setup.rb tasks tests web
+  rm -rf .??* Gemfile Rakefile *.gemspec ext java rakelib tests
   strip lib/*.so
 popd
 
@@ -79,7 +79,9 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/GNU
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
@@ -92,6 +94,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Sep 9 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.0.0-1%{?dist}
+- New upstream version
+
 * Sun Mar 6 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.12.10-2%{?dist}
 - Massive rebuild to change pakk's packages requirements
 

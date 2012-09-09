@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bson_ext
-Version:        1.6.4
+Version:        1.7.0
 Release:        1%{?dist}
 Summary:        C extensions for Ruby BSON
 
@@ -88,6 +88,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Sep 9 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.7.0-1%{?dist}
+- New upstream version
+
 * Fri Jun 8 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.6.4-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bundler
-Version:        1.2.0
+Version:        1.2.1
 Release:        1%{?dist}
 Summary:        The best way to manage your application's dependencies
 
@@ -103,6 +103,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Thu Sep 20 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.2.1-1%{?dist}
+- New upstream version
+
 * Sun Sep 9 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.2.0-1%{?dist}
 - New upstream version
 

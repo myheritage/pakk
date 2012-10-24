@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-coderay
-Version:        1.0.7
+Version:        1.0.8
 Release:        1%{?dist}
 Summary:        Fast syntax highlighting for selected languages
 
@@ -85,6 +85,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Oct 21 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.0.8-1%{?dist}
+- New upstream version
+
 * Wed Jun 27 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.0.7-1%{?dist}
 - New upstream version
 

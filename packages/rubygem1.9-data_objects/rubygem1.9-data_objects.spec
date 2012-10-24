@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-data_objects
-Version:        0.10.8
+Version:        0.10.10
 Release:        1%{?dist}
 Summary:        DataObjects basic API and shared driver specifications
 
@@ -81,6 +81,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Oct 21 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.10-1%{?dist}
+- New upstream version
+
 * Sun Feb 12 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.8-1%{?dist}
 - New upstream version
 

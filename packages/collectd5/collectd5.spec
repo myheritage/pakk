@@ -20,7 +20,7 @@
 #-----------------------------------------------------------------------------
 Name:           collectd5
 Version:        5.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Statistics collection daemon for filling RRD files
 
 Group:          System Environment/Daemons
@@ -116,9 +116,7 @@ Summary:        Java module for collectd
 Group:          System Environment/Daemons
 AutoReqProv:    no
 
-BuildRequires:  java-1.6.0-openjdk-devel
-
-Requires:       openjdk
+BuildRequires:  java-devel
 
 %description java
 This plugin for collectd provides Java and JMX support.
@@ -430,12 +428,7 @@ export CFLAGS="%{optflags} -DLT_LAZY_OR_NOW='RTLD_LAZY|RTLD_GLOBAL'"
 %endif
   --enable-irq \
   --enable-ipmi \
-%ifarch i386
-  --with-java=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0 \
-%endif
-%ifarch x86_64
-  --with-java=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.%{_arch} \
-%endif
+  --with-java=/usr/lib/jvm/java/ \
   --enable-java \
   --enable-libvirt \
   --enable-load \
@@ -690,6 +683,9 @@ fi
 
 #-----------------------------------------------------------------------------
 %changelog
+* Thu Nov 1 2012 Eric-Olivier Lamey <pakk@96b.it> - 5.1.0-3%{?dist}
+- Renamed package to collectd5
+
 * Mon Apr 30 2012 Eric-Olivier Lamey <pakk@96b.it> - 5.1.0-2%{?dist}
 - Renamed package to collectd5
 

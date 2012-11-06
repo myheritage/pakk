@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-chef-expander
-Version:        0.10.10
+Version:        10.16.2
 Release:        1%{?dist}
 Summary:        Replaces the former chef-solr-indexer daemon (rubygem)
 
@@ -24,7 +24,7 @@ Source1:        %{name}-expander.rb
 Source2:        %{name}.init
 Source3:        %{name}.sysconfig
 Source4:        %{name}.logrotate
-Source5:        %{name}-chef-expander-cluster.8
+Source5:        %{name}-chef-expander.8
 Source6:        %{name}-chef-expanderctl.8
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -42,7 +42,7 @@ Requires:       rubygem1.9-highline <= 1.6.9
 Requires:       rubygem1.9-fast_xs <= 0.7.3
 Requires:       rubygem1.9-mixlib-log >= 1.2.0
 Requires:       rubygem1.9-uuidtools >= 2.1.1
-Requires:       rubygem1.9-yajl >= 1.1.0
+Requires:       rubygem1.9-yajl >= 1.0.0
 
 %description
 Chef Expander replaces the chef-solr-indexer daemon that was included with
@@ -105,7 +105,7 @@ install -D -p -m 0755 %{SOURCE2} %{buildroot}%{_initrddir}/%{gemname}
 install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/sysconfig/%{gemname}
 install -D -p -m 0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/logrotate.d/%{gemname}
 
-install -D -p -m 0644 %{SOURCE5} %{buildroot}%{_mandir}/man8/%{gemname}-cluster.8
+install -D -p -m 0644 %{SOURCE5} %{buildroot}%{_mandir}/man8/%{gemname}.8
 install -D -p -m 0644 %{SOURCE6} %{buildroot}%{_mandir}/man8/%{gemname}ctl.8
 gzip %{buildroot}%{_mandir}/man8/*
 
@@ -160,6 +160,9 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Oct 30 2012 Eric-Olivier Lamey <pakk@96b.it> - 10.16.2-1%{?dist}
+- New upstream version
+
 * Sat May 12 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.10-1%{?dist}
 - New upstream version
 

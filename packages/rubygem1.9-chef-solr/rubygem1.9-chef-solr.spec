@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-chef-solr
-Version:        0.10.10
+Version:        10.16.2
 Release:        1%{?dist}
 Summary:        Manages search indexes of Chef node attributes using Solr (rubygem)
 
@@ -155,6 +155,9 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Oct 30 2012 Eric-Olivier Lamey <pakk@96b.it> - 10.16.2-1%{?dist}
+- New upstream version
+
 * Sat May 12 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.10.10-1%{?dist}
 - New upstream version
 

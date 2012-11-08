@@ -12,8 +12,8 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mysql
-Version:        2.8.1
-Release:        2%{?dist}
+Version:        2.8.2
+Release:        1%{?dist}
 Summary:        MySQL Ruby driver
 
 Group:          Development/Languages
@@ -59,13 +59,8 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .require_paths Rakefile ext extra tasks test
-  strip lib/*.so
-popd
-
-pushd %{buildroot}%{ruby_sitelib}
-  sed -i -e 's|%{buildroot}||g' \
-    doc/%{gemname}-%{version}/rdoc/ext/mysql_api/Makefile.html
+  rm -rf .gemtest .require_paths Rakefile ext extra tasks test
+  strip lib/%{gemname}/*.so
 popd
 
 
@@ -92,6 +87,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Thu Nov 8 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.8.2-1%{?dist}
+- New upstream version
+
 * Sun Mar 6 2011 Eric-Olivier Lamey <pakk@96b.it> - 2.8.1-2%{?dist}
 - Massive rebuild to change pakk's packages requirements
 

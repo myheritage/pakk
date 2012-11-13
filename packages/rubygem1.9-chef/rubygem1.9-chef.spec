@@ -15,7 +15,7 @@
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-chef
 Version:        10.16.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Configuration management tool (rubygem)
 
 Group:          Development/Languages
@@ -34,7 +34,7 @@ BuildRequires:  ruby1.9-devel
 Requires:       chef-common = %{version}
 Requires:       initscripts
 Requires:       ruby1.9
-Requires:       rubygem1.9-bunny >= 0.6.0
+Requires:       rubygem1.9-bunny < 0.8.0
 Requires:       rubygem1.9-erubis
 Requires:       rubygem1.9-highline >= 1.6.9
 Requires:       rubygem1.9-json <= 1.6.1
@@ -218,6 +218,9 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Nov 13 2012 Eric-Olivier Lamey <pakk@96b.it> - 10.16.2-2%{?dist}
+- Fixed bunny dependency
+
 * Tue Oct 30 2012 Eric-Olivier Lamey <pakk@96b.it> - 10.16.2-1%{?dist}
 - New upstream version
 

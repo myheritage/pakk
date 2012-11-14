@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-em-http-request
-Version:        0.3.0
+Version:        1.0.3
 Release:        1%{?dist}
 Summary:        EventMachine based, async HTTP Request client
 
@@ -22,12 +22,15 @@ URL:            http://github.com/igrigorik/em-http-request
 Source0:        http://rubygems.org/downloads/%{gemname}-%{version}.gem
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
+BuildArch:      noarch
 BuildRequires:  ruby1.9-devel
 
 Requires:       ruby1.9
-Requires:       rubygem1.9-addressable >= 2.0.0
-Requires:       rubygem1.9-escape_utils
-Requires:       rubygem1.9-eventmachine >= 0.12.9
+Requires:       rubygem1.9-addressable >= 2.2.3
+Requires:       rubygem1.9-cookiejar
+Requires:       rubygem1.9-em-socksify
+Requires:       rubygem1.9-eventmachine >= 1.0.0
+Requires:       rubygem1.9-http_parser >= 0.5.3
 
 %description
 Async (EventMachine) HTTP client, with support for:
@@ -51,10 +54,6 @@ Async (EventMachine) HTTP client, with support for:
 Summary:        Documentation for %{name}
 Group:          Documentation
 
-%if 0%{?rhel} >= 6
-BuildArch:      noarch
-%endif
-
 Requires:       %{name} = %{version}
 
 %description doc
@@ -64,15 +63,13 @@ Documentation for %{name} in rdoc and ri format.
 #-------------------------------------------------------------------------------
 %install
 rm -rf %{buildroot}
-export CONFIGURE_ARGS="--with-cflags='%{optflags}'"
 gem1.9 install --local --force \
   --install-dir %{buildroot}%{ruby_sitelib} \
   %{SOURCE0}
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .gitignore .rspec Gemfile Rakefile *.gemspec ext spec
-  strip lib/*.so
+  rm -rf .??* Gemfile Rakefile *.gemspec spec
 popd
 
 
@@ -92,10 +89,14 @@ rm -rf %{buildroot}
 
 %files doc
 %doc %{ruby_sitelib}/doc/%{gemname}-%{version}
+%{ruby_sitelib}/gems/%{gemname}-%{version}/benchmarks
 %{ruby_sitelib}/gems/%{gemname}-%{version}/examples
 
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Nov 13 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.0.3-1%{?dist}
+- New upstream version
+
 * Mon Apr 25 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.3.0-1%{?dist}
 - Initial package creation

@@ -52,6 +52,7 @@ Documentation for %{name} in rdoc and ri format.
 #-------------------------------------------------------------------------------
 %install
 rm -rf %{buildroot}
+export CONFIGURE_ARGS="--with-cflags='%{optflags}'"
 gem1.9 install --local --force \
   --install-dir %{buildroot}%{ruby_sitelib} \
   %{SOURCE0}

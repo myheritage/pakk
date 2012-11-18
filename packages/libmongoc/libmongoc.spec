@@ -2,14 +2,14 @@
 # libmongoc.spec
 #-----------------------------------------------------------------------------
 
-%global gitrev 0ec0ae9
+%global gitrev 013fe75
 
 
 #-----------------------------------------------------------------------------
 # Main package
 #-----------------------------------------------------------------------------
 Name:           libmongoc
-Version:        0.5
+Version:        0.6
 Release:        1%{?dist}
 Summary:        10gen-supported MongoDB C driver
 
@@ -63,7 +63,7 @@ Library for static linking for %{name}.
 #-----------------------------------------------------------------------------
 %build
 
-scons --c99 --use-platform=LINUX
+scons
 
 
 #-----------------------------------------------------------------------------
@@ -73,10 +73,6 @@ make install \
   INSTALL_INCLUDE_PATH=%{buildroot}%{_includedir} \
   INSTALL_LIBRARY_PATH=%{buildroot}%{_libdir}
 
-pushd %{buildroot}%{_libdir}
-  ln -s libmongoc.so.%{version} libmongoc.so
-  ln -s libbson.so.%{version} libbson.so
-popd
 
 #-----------------------------------------------------------------------------
 %clean
@@ -106,5 +102,8 @@ rm -rf %{buildroot}
 
 #-----------------------------------------------------------------------------
 %changelog
+* Sun Nov 18 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.6-1%{?dist}
+- New upstream version
+
 * Fri Apr 6 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.5-1%{?dist}
 - Initial package creation

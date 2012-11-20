@@ -19,8 +19,8 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           collectd5
-Version:        5.1.0
-Release:        3%{?dist}
+Version:        5.2.0
+Release:        1%{?dist}
 Summary:        Statistics collection daemon for filling RRD files
 
 Group:          System Environment/Daemons
@@ -39,6 +39,7 @@ BuildRequires:  iptables-devel
 %endif
 BuildRequires:  kernel-headers
 BuildRequires:  kernel-devel
+BuildRequires:  libgcrypt-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  perl
@@ -505,6 +506,7 @@ sed -i \
   -e 's|^#BaseDir.*|BaseDir     "/var/lib/%{name}"|g' \
   -e 's|^#PIDFile.*|PIDFile     "/var/run/%{name}.pid"|g' \
   %{buildroot}%{_sysconfdir}/%{name}.conf
+echo -e "jmx_memory\t\tvalue:GAUGE:0:U" >> %{buildroot}/%{_datadir}/%{name}/types.db
 
 install -Dp -m0755 contrib/fedora/init.d-collectd %{buildroot}%{_initrddir}/%{name}
 sed -i -e 's|%{upstream_name}|%{name}|g' %{buildroot}%{_initrddir}/%{name}
@@ -513,7 +515,13 @@ install -d -m0755 %{buildroot}%{plugindir}/python
 install -d -m0755 %{buildroot}%{_localstatedir}/lib/%{name}/
 install -d -m0755 %{buildroot}%{_datadir}/%{name}/collection3/
 
-echo -e "jmx_memory\t\tvalue:GAUGE:0:U" >> %{buildroot}/%{_datadir}/%{name}/types.db
+%if 0%{?rhel} >= 6
+install -d -m0755 %{buildroot}%{perl_vendorlib}
+mv %{buildroot}/usr/lib/perl5/* %{buildroot}%{perl_vendorlib}/
+rm -rf %{buildroot}%{_libdir}/perl5
+mv %{buildroot}/usr/man/man3 %{buildroot}%{_mandir}/
+rm -rf %{buildroot}/usr/man
+%endif
 
 find %{buildroot} -name .packlist -exec rm {} \;
 find %{buildroot} -name perllocal.pod -exec rm {} \;
@@ -535,7 +543,7 @@ find contrib -name '*.p[lm]' -exec mv {} perl-examples/ \;
 rm -rf %{buildroot}
 
 
-#-------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 %post
 /sbin/ldconfig
 /sbin/chkconfig --add %{name}
@@ -683,8 +691,11 @@ fi
 
 #-----------------------------------------------------------------------------
 %changelog
+* Sun Nov 18 2012 Eric-Olivier Lamey <pakk@96b.it> - 5.2.0-1%{?dist}
+- New upstream version
+
 * Thu Nov 1 2012 Eric-Olivier Lamey <pakk@96b.it> - 5.1.0-3%{?dist}
-- Renamed package to collectd5
+- Fixed JVM dependency
 
 * Mon Apr 30 2012 Eric-Olivier Lamey <pakk@96b.it> - 5.1.0-2%{?dist}
 - Renamed package to collectd5

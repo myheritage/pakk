@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-amq-protocol
-Version:        0.9.5
+Version:        1.0.1
 Release:        1%{?dist}
 Summary:        AMQP 0.9.1 serialization library for Ruby
 
@@ -55,7 +55,7 @@ gem1.9 install --local --force \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .??* Gemfile Rakefile *.gemspec *.json *.py{,c,o,template} *.rb bin spec
+  rm -rf .??* Gemfile Rakefile *.gemspec *.json *.py{,c,o,template} *.rb bin codegen spec
 popd
 
 
@@ -67,6 +67,7 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/ChangeLog.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/PROFILING.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
@@ -80,6 +81,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Dec 10 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.0.1-1%{?dist}
+- Initial package creation
+
 * Sun Oct 21 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.9.5-1%{?dist}
 - Initial package creation
 

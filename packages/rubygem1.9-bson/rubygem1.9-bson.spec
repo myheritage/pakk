@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bson
-Version:        1.7.0
+Version:        1.8.0
 Release:        1%{?dist}
 Summary:        Ruby implementation of BSON
 
@@ -26,6 +26,7 @@ BuildArch:      noarch
 BuildRequires:  ruby1.9-devel
 
 Requires:       ruby1.9
+Requires:       rubygem1.9-activesupport
 
 %description
 A Ruby BSON implementation for MongoDB. For more information about Mongo,
@@ -49,7 +50,7 @@ Documentation for %{name} in rdoc and ri format.
 #-------------------------------------------------------------------------------
 %install
 rm -rf %{buildroot}
-gem1.9 install --local \
+gem1.9 install --local --force \
   --install-dir %{buildroot}%{ruby_sitelib} \
   %{SOURCE0}
 rm -rf %{buildroot}%{ruby_sitelib}/cache
@@ -72,7 +73,8 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE.txt
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/VERSION
 %{_bindir}/*
 %{ruby_sitelib}/bin/*
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
@@ -86,6 +88,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Dec 10 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.8.0-1%{?dist}
+- New upstream version
+
 * Sun Sep 9 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.7.0-1%{?dist}
 - New upstream version
 

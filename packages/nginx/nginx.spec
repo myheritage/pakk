@@ -10,7 +10,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           nginx
-Version:        1.2.4
+Version:        1.2.5
 Release:        1%{?dist}
 Summary:        A HTTP and reverse proxy server
 
@@ -156,6 +156,9 @@ fi
 
 #-----------------------------------------------------------------------------
 %changelog
+* Mon Dec 10 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.2.5-1%{?dist}
+- New upstream version
+
 * Sun Oct 21 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.2.4-1%{?dist}
 - New upstream version
 

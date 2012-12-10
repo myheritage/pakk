@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-ffi
-Version:        1.1.5
+Version:        1.2.0
 Release:        1%{?dist}
 Summary:        Ruby extension for programmatically loading dynamic libraries
 
@@ -62,8 +62,13 @@ gem1.9 install --local --force \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .require_paths Rakefile ext gen spec tasks
+  rm -rf .require_paths Rakefile ext gen libtest spec tasks
   strip lib/*.so
+popd
+
+pushd %{buildroot}%{ruby_sitelib}
+  find doc/%{gemname}-%{version} -name Makefile.html -exec \
+    sed -i -e 's|%{buildroot}||g' {} \;
 popd
 
 
@@ -76,8 +81,10 @@ rm -rf %{buildroot}
 %files
 %defattr(-, root, root, -)
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/History.txt
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/COPYING
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/COPYING.LESSER
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.rdoc
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
@@ -88,6 +95,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Dec 10 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.2.0-1%{?dist}
+- New upstream version
+
 * Sat Aug 25 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.1.5-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bson_ext
-Version:        1.7.0
+Version:        1.8.0
 Release:        1%{?dist}
 Summary:        C extensions for Ruby BSON
 
@@ -61,12 +61,12 @@ rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
   rm -rf .require_paths Rakefile ext/cbson ext/cmongo bson_ext.gemspec
-  strip ext/bson_ext/*.so
+  find ext -name *.so -exec strip {} \;
 popd
 
 pushd %{buildroot}%{ruby_sitelib}
-  sed -i -e 's|%{buildroot}||g' \
-    doc/%{gemname}-%{version}/rdoc/ext/cbson/Makefile.html
+  find doc/%{gemname}-%{version} -name Makefile.html -exec \
+    sed -i -e 's|%{buildroot}||g' {} \;
 popd
 
 
@@ -78,6 +78,8 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/VERSION
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/ext
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
@@ -88,6 +90,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Dec 10 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.8.0-1%{?dist}
+- New upstream version
+
 * Sun Sep 9 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.7.0-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-libxml
-Version:        2.3.3
+Version:        2.4.0
 Release:        1%{?dist}
 Summary:        Ruby language bindings for GNOME's Libxml2
 
@@ -88,6 +88,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Dec 16 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.4.0-1%{?dist}
+- New upstream version
+
 * Mon Jul 2 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.3.3-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-msgpack
-Version:        0.4.8
+Version:        0.5.0
 Release:        1%{?dist}
 Summary:        Binary-based efficient data interchange format
 
@@ -57,13 +57,8 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf ext msgpack test
-  strip lib/*.so
-popd
-
-pushd %{buildroot}%{ruby_sitelib}
-  sed -i -e 's|%{buildroot}||g' \
-    doc/%{gemname}-%{version}/rdoc/ext/Makefile.html
+  rm -rf .??* Rakefile Gemfile *.gemspec ext msgpack spec
+  find . -name \*.so -exec strip {} \;
 popd
 
 
@@ -75,16 +70,22 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/ChangeLog
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.rdoc
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
 
 %files doc
 %doc %{ruby_sitelib}/doc/%{gemname}-%{version}
+%{ruby_sitelib}/gems/%{gemname}-%{version}/doclib
 
 
 #-------------------------------------------------------------------------------
 %changelog
+* Fri Dec 21 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.5.0-1%{?dist}
+- New upstream version
+
 * Mon Dec 17 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.4.8-1%{?dist}
 - New upstream version
 

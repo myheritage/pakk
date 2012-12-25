@@ -12,8 +12,8 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-moneta
-Version:        0.6.0
-Release:        2%{?dist}
+Version:        0.7.1
+Release:        1%{?dist}
 Summary:        Unified interface to key/value stores
 
 Group:          Development/Languages
@@ -53,7 +53,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf Rakefile TODO
+  rm -rf .??* Gemfile Rakefile SPEC.md *.gemspec benchmarks spec
 popd
 
 
@@ -65,8 +65,9 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGES
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
@@ -77,6 +78,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Dec 25 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.7.1-1%{?dist}
+- New upstream version
+
 * Sun Mar 6 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.6.0-2%{?dist}
 - Massive rebuild to change pakk's packages requirements
 

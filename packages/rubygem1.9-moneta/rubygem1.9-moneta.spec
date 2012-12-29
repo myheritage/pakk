@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-moneta
-Version:        0.7.1
+Version:        0.7.2
 Release:        1%{?dist}
 Summary:        Unified interface to key/value stores
 
@@ -78,6 +78,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Dec 29 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.7.2-1%{?dist}
+- New upstream version
+
 * Tue Dec 25 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.7.1-1%{?dist}
 - New upstream version
 

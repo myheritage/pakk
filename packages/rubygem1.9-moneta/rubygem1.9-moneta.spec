@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-moneta
-Version:        0.7.2
+Version:        0.7.4
 Release:        1%{?dist}
 Summary:        Unified interface to key/value stores
 
@@ -53,7 +53,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .??* Gemfile Rakefile SPEC.md *.gemspec benchmarks spec
+  rm -rf .??* Gemfile Rakefile SPEC.md *.gemspec benchmarks script spec
 popd
 
 
@@ -78,6 +78,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Jan 5 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.7.4-1%{?dist}
+- New upstream version
+
 * Sat Dec 29 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.7.2-1%{?dist}
 - New upstream version
 

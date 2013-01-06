@@ -1,0 +1,11 @@
+--- graphite-web-0.9.10.orig/webapp/graphite/metrics/search.py	2012-05-31 06:28:54.000000000 +0000
++++ graphite-web-0.9.10/webapp/graphite/metrics/search.py	2013-01-06 14:24:55.569326051 +0000
+@@ -11,7 +11,7 @@
+     self.index_path = index_path
+     if not os.path.exists(index_path):
+       open(index_path, 'w').close() # touch the file to prevent re-entry down this code path
+-      build_index_path = os.path.join(settings.GRAPHITE_ROOT, "bin/build-index.sh")
++      build_index_path = '/usr/bin/graphite-build-index'
+       retcode = subprocess.call(build_index_path)
+       if retcode != 0:
+         log.exception("Couldn't build index file %s" % index_path)

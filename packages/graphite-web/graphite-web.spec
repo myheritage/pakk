@@ -8,7 +8,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           graphite-web
-Version:        0.9.9
+Version:        0.9.10
 Release:        1%{?dist}
 Summary:        Enterprise scalable realtime graphing
 
@@ -16,7 +16,10 @@ Group:          Applications/System
 License:        ASL 2.0
 URL:            https://launchpad.net/graphite
 Source0:        http://launchpad.net/graphite/0.9/%{version}/+download/%{name}-%{version}.tar.gz
-Patch0:         %{name}-paths.patch
+Patch0:         %{name}-graphite.wsgi.patch
+Patch1:         %{name}-search.py.patch
+Patch2:         %{name}-settings.py.patch
+Patch3:         %{name}-vhost.conf.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch
@@ -40,6 +43,9 @@ Backend data caching and persistence daemon for Graphite.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 
 #-----------------------------------------------------------------------------
@@ -52,7 +58,7 @@ rm -f setup.cfg
 %install
 rm -rf %{buildroot}
 %{__python} setup.py install --skip-build --root %{buildroot}
-rm -rf %{buildroot}%{_prefix}/{conf,storage}
+rm -rf %{buildroot}%{_prefix}/{conf,examples,storage}
 
 pushd %{buildroot}%{_bindir}
   sed -i \
@@ -101,20 +107,27 @@ if [ $1 == 1 ]; then
 fi
 
 %post
-[ ! -f %{_localstatedir}/lib/%{name}/graphite.db ] && \
+if [ ! -f %{_localstatedir}/lib/%{name}/graphite.db ]; then
   python %{python_sitelib}/graphite/manage.py syncdb --noinput > /dev/null
-chown %{name}:%{name} %{_localstatedir}/lib/%{name}/graphite.db
+  chown %{name}:%{name} %{_localstatedir}/lib/%{name}/graphite.db
+fi
 
 
 #-----------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc LICENSE README examples
+%doc LICENSE examples
 %dir %{_sysconfdir}/%{name}
 %config(noreplace) %{_sysconfdir}/%{name}/*
-%{_bindir}/*
-%{python_sitelib}/*
 %config(noreplace) %{python_sitelib}/graphite/local_settings.py
+%{_bindir}/*
+%{python_sitelib}/*.egg-info
+%dir %{python_sitelib}/graphite
+%{python_sitelib}/graphite/_*
+%{python_sitelib}/graphite/[a-g]*
+%{python_sitelib}/graphite/local_settings.py?
+%{python_sitelib}/graphite/logg*
+%{python_sitelib}/graphite/[m-w]*
 %{_datadir}/%{name}
 %attr(-, %{name}, %{name}) %{_localstatedir}/lib/%{name}
 %dir %attr(-, %{name}, %{name}) %{_localstatedir}/log/%{name}
@@ -122,5 +135,8 @@ chown %{name}:%{name} %{_localstatedir}/lib/%{name}/graphite.db
 
 #-----------------------------------------------------------------------------
 %changelog
+* Sun Jan 6 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.9.10-1%{?dist}
+- New upstream version
+
 * Sun Apr 22 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.9.9-1%{?dist}
 - Initial package creation

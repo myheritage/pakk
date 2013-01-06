@@ -1,0 +1,50 @@
+--- graphite-web-0.9.10.orig/examples/example-graphite-vhost.conf	2012-05-31 06:28:54.000000000 +0000
++++ graphite-web-0.9.10/examples/example-graphite-vhost.conf	2013-01-06 14:19:29.591263771 +0000
+@@ -21,22 +21,22 @@
+ 
+ <VirtualHost *:80>
+         ServerName graphite
+-        DocumentRoot "/opt/graphite/webapp"
+-        ErrorLog /opt/graphite/storage/log/webapp/error.log
+-        CustomLog /opt/graphite/storage/log/webapp/access.log common
++        DocumentRoot "/usr/share/graphite-web/webapp"
++        ErrorLog /var/log/httpd/graphite/error.log
++        CustomLog /var/log/httpd/graphite/access.log common
+ 
+         # I've found that an equal number of processes & threads tends
+         # to show the best performance for Graphite (ymmv).
+-        WSGIDaemonProcess graphite processes=5 threads=5 display-name='%{GROUP}' inactivity-timeout=120
++        WSGIDaemonProcess graphite user=graphite-web group=graphite-web processes=5 threads=5 display-name='%{GROUP}' inactivity-timeout=120
+         WSGIProcessGroup graphite
+         WSGIApplicationGroup %{GLOBAL}
+-        WSGIImportScript /opt/graphite/conf/graphite.wsgi process-group=graphite application-group=%{GLOBAL}
++        WSGIImportScript /usr/share/graphite-web/graphite-web.wsgi process-group=graphite application-group=%{GLOBAL}
+ 
+         # XXX You will need to create this file! There is a graphite.wsgi.example
+         # file in this directory that you can safely use, just copy it to graphite.wgsi
+-        WSGIScriptAlias / /opt/graphite/conf/graphite.wsgi 
++        WSGIScriptAlias / /usr/share/graphite-web/graphite-web.wsgi
+ 
+-        Alias /content/ /opt/graphite/webapp/content/
++        Alias /content/ /usr/share/graphite-web/webapp/content/
+         <Location "/content/">
+                 SetHandler None
+         </Location>
+@@ -45,16 +45,9 @@
+         # must change @DJANGO_ROOT@ to be the path to your django
+         # installation, which is probably something like:
+         # /usr/lib/python2.6/site-packages/django
+-        Alias /media/ "@DJANGO_ROOT@/contrib/admin/media/"
++        Alias /media/ "/usr/lib/python2.6/site-packages/django/contrib/admin/media"
+         <Location "/media/">
+                 SetHandler None
+         </Location>
+ 
+-        # The graphite.wsgi file has to be accessible by apache. It won't
+-        # be visible to clients because of the DocumentRoot though.
+-        <Directory /opt/graphite/conf/>
+-                Order deny,allow
+-                Allow from all
+-        </Directory>
+-
+ </VirtualHost>

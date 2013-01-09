@@ -12,8 +12,8 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-extlib
-Version:        0.9.15
-Release:        2%{?dist}
+Version:        0.9.16
+Release:        1%{?dist}
 Summary:        Support library for DataMapper and Merb
 
 Group:          Development/Languages
@@ -81,6 +81,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed Jan 9 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.9.16-1%{?dist}
+- New upstream version
+
 * Sun Mar 6 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.9.15-2%{?dist}
 - Massive rebuild to change pakk's packages requirements
 

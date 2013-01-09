@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-ffi
-Version:        1.2.0
+Version:        1.3.0
 Release:        1%{?dist}
 Summary:        Ruby extension for programmatically loading dynamic libraries
 
@@ -62,7 +62,7 @@ gem1.9 install --local --force \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .require_paths Rakefile ext gen libtest spec tasks
+  rm -rf .??* *.gemspec Rakefile ext gen libtest spec tasks
   strip lib/*.so
 popd
 
@@ -95,6 +95,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed Jan 9 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.3.0-1%{?dist}
+- New upstream version
+
 * Mon Dec 10 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.2.0-1%{?dist}
 - New upstream version
 

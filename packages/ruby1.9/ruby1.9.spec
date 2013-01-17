@@ -4,7 +4,7 @@
 
 %global ruby_major          1.9
 %global ruby_version        1.9.3
-%global ruby_patchlevel     p362
+%global ruby_patchlevel     p374
 %global ruby_compatibility  1.9.1
 %global program_suffix      %{ruby_major}
 
@@ -53,21 +53,6 @@ straight-forward, and extensible.
 
 
 #-----------------------------------------------------------------------------
-# -tcltk package
-#-----------------------------------------------------------------------------
-%package tcltk
-Summary:        Tcl/tk libraries for Ruby
-Group:          Development/Languages
-
-Requires:       %{name} = %{version}
-Requires:       tcl
-Requires:       tk
-
-%description tcltk
-Tcl and tk Ruby libraries.
-
-
-#-----------------------------------------------------------------------------
 # -devel package
 #-----------------------------------------------------------------------------
 %package devel
@@ -94,6 +79,21 @@ BuildArch:      noarch
 %description doc
 Documentation for Ruby methods, classes and modules which can be
 accessed with the ri tool.
+
+
+#-----------------------------------------------------------------------------
+# -tcltk package
+#-----------------------------------------------------------------------------
+%package tcltk
+Summary:        Tcl/tk libraries for Ruby
+Group:          Development/Languages
+
+Requires:       %{name} = %{version}
+Requires:       tcl
+Requires:       tk
+
+%description tcltk
+Tcl and tk Ruby libraries.
 
 
 #-----------------------------------------------------------------------------
@@ -174,6 +174,9 @@ rm -rf %{buildroot}
 
 #-----------------------------------------------------------------------------
 %changelog
+* Thu Jan 17 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.9.3.p374-1%{?dist}
+- New upstream version
+
 * Tue Dec 25 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.9.3.p362-1%{?dist}
 - New upstream version
 

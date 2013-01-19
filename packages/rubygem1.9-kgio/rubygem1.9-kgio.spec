@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-kgio
-Version:        2.7.4
+Version:        2.8.0
 Release:        1%{?dist}
 Summary:        Kinder, gentler I/O for Ruby
 
@@ -94,6 +94,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Jan 19 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.8.0-1%{?dist}
+- New upstream version
+
 * Sun Mar 24 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.7.4-1%{?dist}
 - New upstream version
 

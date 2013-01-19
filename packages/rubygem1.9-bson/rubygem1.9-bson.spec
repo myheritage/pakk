@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bson
-Version:        1.8.1
+Version:        1.8.2
 Release:        1%{?dist}
 Summary:        Ruby implementation of BSON
 
@@ -88,6 +88,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Jan 19 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.8.2-1%{?dist}
+- New upstream version
+
 * Sat Jan 5 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.8.1-1%{?dist}
 - New upstream version
 

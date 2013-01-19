@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-ohai
-Version:        6.14.0
+Version:        6.16.0
 Release:        1%{?dist}
 Summary:        Profiles your system and emits JSON
 
@@ -31,6 +31,7 @@ Requires:       rubygem1.9-ipaddress
 Requires:       rubygem1.9-mixlib-cli
 Requires:       rubygem1.9-mixlib-config
 Requires:       rubygem1.9-mixlib-log
+Requires:       rubygem1.9-mixlib-shellout
 Requires:       rubygem1.9-systemu
 Requires:       rubygem1.9-yajl
 
@@ -95,11 +96,14 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Jan 19 2013 Eric-Olivier Lamey <pakk@96b.it> - 6.16.0-1%{?dist}
+- New upstream version
+
 * Thu May 31 2012 Eric-Olivier Lamey <pakk@96b.it> - 6.14.0-1%{?dist}
-- Updated dependecy on net-ssh (rpm needs ~>)
+- New upstream version
 
 * Fri Mar 23 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.6.12-1%{?dist}
-- Updated dependecy on net-ssh (rpm needs ~>)
+- New upstream version
 
 * Tue Jan 3 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.6.10-2%{?dist}
 - Updated dependecy on net-ssh (rpm needs ~>)

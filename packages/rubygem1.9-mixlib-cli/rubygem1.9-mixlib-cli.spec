@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mixlib-cli
-Version:        1.2.2
+Version:        1.3.0
 Release:        1%{?dist}
 Summary:        Simple mixin for CLI interfaces, including option parsing
 
@@ -78,6 +78,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Jan 19 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.3.0-1%{?dist}
+- New upstream version
+
 * Fri Sep 9 2011 Eric-Olivier Lamey <pakk@96b.it> - 1.2.2-1%{?dist}
 - New upstream version
 

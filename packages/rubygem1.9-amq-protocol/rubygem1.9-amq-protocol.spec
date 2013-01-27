@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-amq-protocol
-Version:        1.0.1
+Version:        1.1.0
 Release:        1%{?dist}
 Summary:        AMQP 0.9.1 serialization library for Ruby
 
@@ -81,26 +81,29 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Jan 27 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.1.0-1%{?dist}
+- New upstream version
+
 * Mon Dec 10 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.0.1-1%{?dist}
-- Initial package creation
+- New upstream version
 
 * Sun Oct 21 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.9.5-1%{?dist}
-- Initial package creation
+- New upstream version
 
 * Sun Jul 8 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.9.4-1%{?dist}
-- Initial package creation
+- New upstream version
 
 * Wed Jun 27 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.9.3-1%{?dist}
-- Initial package creation
+- New upstream version
 
 * Wed Jan 11 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.9.0-1%{?dist}
-- Initial package creation
+- New upstream version
 
 * Fri Nov 11 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.8.4-1%{?dist}
-- Initial package creation
+- New upstream version
 
 * Thu Oct 20 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.8.3-1%{?dist}
-- Initial package creation
+- New upstream version
 
 * Sun Sep 4 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.8.0-1%{?dist}
 - Initial package creation

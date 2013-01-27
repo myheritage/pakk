@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-amq-client
-Version:        0.9.10
+Version:        0.9.11
 Release:        1%{?dist}
 Summary:        Fully-featured, low-level AMQP 0.9.1 client
 
@@ -26,7 +26,7 @@ BuildArch:      noarch
 BuildRequires:  ruby1.9-devel
 
 Requires:       ruby1.9
-Requires:       rubygem1.9-amq-protocol >= 0.9.4
+Requires:       rubygem1.9-amq-protocol >= 1.0.1
 Requires:       rubygem1.9-eventmachine
 
 %description
@@ -84,6 +84,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Jan 27 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.9.11-1%{?dist}
+- New upstream version
+
 * Mon Dec 10 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.9.10-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-do_sqlite3
-Version:        0.10.11
+Version:        0.10.12
 Release:        1%{?dist}
 Summary:        DataObjects Sqlite3 Driver
 
@@ -86,6 +86,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Jan 28 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.10.12-1%{?dist}
+- New upstream version
+
 * Sat Jan 5 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.10.11-1%{?dist}
 - New upstream version
 

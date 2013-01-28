@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-chef-server-api
-Version:        10.16.2
+Version:        10.18.2
 Release:        1%{?dist}
 Summary:        Merb slice providing REST API for Chef client access (rubygem)
 
@@ -35,6 +35,7 @@ Requires:       couchdb >= 0.9.1
 Requires:       rabbitmq-server
 Requires:       ruby1.9
 Requires:       rubygem1.9-dep_selector >= 0.0.3
+Requires:       rubygem1.9-extlib < 0.10.0
 Requires:       rubygem1.9-merb-core >= 1.1.0
 Requires:       rubygem1.9-merb-assets >= 1.1.0
 Requires:       rubygem1.9-merb-helpers >= 1.1.0
@@ -159,6 +160,9 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Jan 28 2013 Eric-Olivier Lamey <pakk@96b.it> - 10.18.2-1%{?dist}
+- New upstream version
+
 * Tue Oct 30 2012 Eric-Olivier Lamey <pakk@96b.it> - 10.16.2-1%{?dist}
 - New upstream version
 

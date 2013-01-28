@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-chef-expander
-Version:        10.16.2
+Version:        10.18.2
 Release:        1%{?dist}
 Summary:        Replaces the former chef-solr-indexer daemon (rubygem)
 
@@ -160,6 +160,9 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Jan 28 2013 Eric-Olivier Lamey <pakk@96b.it> - 10.18.2-1%{?dist}
+- New upstream version
+
 * Tue Oct 30 2012 Eric-Olivier Lamey <pakk@96b.it> - 10.16.2-1%{?dist}
 - New upstream version
 

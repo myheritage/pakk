@@ -14,8 +14,8 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-chef
-Version:        10.16.2
-Release:        2%{?dist}
+Version:        10.18.2
+Release:        1%{?dist}
 Summary:        Configuration management tool (rubygem)
 
 Group:          Development/Languages
@@ -45,7 +45,7 @@ Requires:       rubygem1.9-mixlib-cli >= 1.1.0
 Requires:       rubygem1.9-mixlib-config >= 1.1.2
 Requires:       rubygem1.9-mixlib-log >= 1.3.0
 Requires:       rubygem1.9-mixlib-shellout
-Requires:       rubygem1.9-moneta
+Requires:       rubygem1.9-moneta < 0.7.0
 Requires:       rubygem1.9-ohai >= 0.6.0
 Requires:       rubygem1.9-rest-client < 1.7.0
 Requires:       rubygem1.9-treetop >= 1.4.9
@@ -218,6 +218,9 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Jan 28 2013 Eric-Olivier Lamey <pakk@96b.it> - 10.18.2-1%{?dist}
+- New upstream version
+
 * Tue Nov 13 2012 Eric-Olivier Lamey <pakk@96b.it> - 10.16.2-2%{?dist}
 - Fixed bunny dependency
 

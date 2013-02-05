@@ -12,8 +12,8 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-rdiscount
-Version:        1.6.8
-Release:        2%{?dist}
+Version:        2.0.7
+Release:        1%{?dist}
 Summary:        Fast Implementation of Gruber's Markdown in C
 
 Group:          Development/Languages
@@ -99,6 +99,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Feb 5 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.0.7-1%{?dist}
+- New upstream version
+
 * Sun Mar 6 2011 Eric-Olivier Lamey <pakk@96b.it> - 1.6.8-2%{?dist}
 - Massive rebuild to change pakk's packages requirements
 

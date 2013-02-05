@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-rack
-Version:        1.5.0
+Version:        1.5.1
 Release:        1%{?dist}
 Summary:        A modular Ruby webserver interface
 
@@ -88,6 +88,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Feb 5 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.5.1-1%{?dist}
+- New upstream version
+
 * Sun Jan 27 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.5.0-1%{?dist}
 - New upstream version
 

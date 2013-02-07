@@ -4,7 +4,7 @@
 
 %global ruby_major          1.9
 %global ruby_version        1.9.3
-%global ruby_patchlevel     p374
+%global ruby_patchlevel     p385
 %global ruby_compatibility  1.9.1
 %global program_suffix      %{ruby_major}
 
@@ -174,6 +174,9 @@ rm -rf %{buildroot}
 
 #-----------------------------------------------------------------------------
 %changelog
+* Wed Feb 6 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.9.3.p385-1%{?dist}
+- New upstream version
+
 * Thu Jan 17 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.9.3.p374-1%{?dist}
 - New upstream version
 

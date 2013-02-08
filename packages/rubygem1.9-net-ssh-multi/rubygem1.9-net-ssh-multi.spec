@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-net-ssh-multi
-Version:        1.1
+Version:        1.2.0
 Release:        1%{?dist}
 Summary:        Control multiple Net::SSH connections via a single interface
 
@@ -26,8 +26,8 @@ BuildArch:      noarch
 BuildRequires:  ruby1.9-devel
 
 Requires:       ruby1.9
-Requires:       rubygem1.9-net-ssh >= 1.99.2
-Requires:       rubygem1.9-net-ssh-gateway >= 0.99.0
+Requires:       rubygem1.9-net-ssh >= 2.6.5
+Requires:       rubygem1.9-net-ssh-gateway >= 1.2.0
 
 %description
 Net::SSH::Multi is a library for controlling multiple Net::SSH connections
@@ -59,7 +59,7 @@ gem1.9 install --local --force \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf Manifest Rakefile setup.rb test %{gemname}.gemspec
+  rm -rf *.gemspec *.pem Manifest Rakefile setup.rb test
 popd
 
 
@@ -71,7 +71,8 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG.rdoc
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGES.txt
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE.txt
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.rdoc
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
@@ -83,6 +84,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Fri Feb 8 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.2.0-1%{?dist}
+- New upstream version
+
 * Thu Apr 7 2011 Eric-Olivier Lamey <pakk@96b.it> - 1.1-1%{?dist}
 - New upstream version
 

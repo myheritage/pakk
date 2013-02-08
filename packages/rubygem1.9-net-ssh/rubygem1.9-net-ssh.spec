@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-net-ssh
-Version:        2.6.3
+Version:        2.6.5
 Release:        1%{?dist}
 Summary:        Pure-Ruby implementation of the SSH2 client protocol
 
@@ -55,7 +55,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf Manifest Rakefile Rudyfile setup.rb test %{gemname}.gemspec
+  rm -rf *.gemspec *.pem Manifest Rakefile Rudyfile setup.rb test
 
   sed -i -e 's|/usr/bin/ruby|/usr/bin/ruby1.9|g' support/*
 popd
@@ -69,10 +69,10 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG.rdoc
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE.rdoc
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGES.txt
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE.txt
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.rdoc
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/THANKS.rdoc
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/THANKS.txt
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/gems/%{gemname}-%{version}/support
@@ -84,6 +84,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Fri Feb 8 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.6.5-1%{?dist}
+- New upstream version
+
 * Sun Jan 13 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.6.3-1%{?dist}
 - New upstream version
 

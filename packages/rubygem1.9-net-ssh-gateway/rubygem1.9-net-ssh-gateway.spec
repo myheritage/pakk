@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-net-ssh-gateway
-Version:        1.1.0
+Version:        1.2.0
 Release:        1%{?dist}
 Summary:        Simple library to assist in establishing tunneled Net::SSH connections
 
@@ -58,7 +58,7 @@ gem1.9 install --local --force \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf Manifest Rakefile setup.rb test %{gemname}.gemspec
+  rm -rf *.gemspec *.pem Manifest Rakefile setup.rb test
 popd
 
 
@@ -70,7 +70,8 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG.rdoc
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGES.txt
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE.txt
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.rdoc
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
@@ -82,6 +83,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Fri Feb 8 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.2.0-1%{?dist}
+- New upstream version
+
 * Sun May 1 2011 Eric-Olivier Lamey <pakk@96b.it> - 1.1.0-1%{?dist}
 - New upstream version
 

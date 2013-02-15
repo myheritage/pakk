@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-openid
-Version:        2.2.2
+Version:        2.2.3
 Release:        1%{?dist}
 Summary:        Library for consuming and serving OpenID identities
 
@@ -80,14 +80,17 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Fri Feb 15 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.2.3-1%{?dist}
+- New upstream version
+
 * Wed Oct 24 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.2.2-1%{?dist}
-- Initial package creation
+- New upstream version
 
 * Sun Oct 21 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.2.1-1%{?dist}
-- Initial package creation
+- New upstream version
 
 * Sun Jul 8 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.2.0-1%{?dist}
-- Initial package creation
+- New upstream version
 
 * Sun Mar 6 2011 Eric-Olivier Lamey <pakk@96b.it> - 2.1.8-2%{?dist}
 - Massive rebuild to change pakk's packages requirements

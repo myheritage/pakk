@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bundler
-Version:        1.2.3
+Version:        1.2.4
 Release:        1%{?dist}
 Summary:        The best way to manage your application's dependencies
 
@@ -55,7 +55,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .gitignore .travis.yml Rakefile %{gemname}.gemspec spec
+  rm -rf .??* Rakefile %{gemname}.gemspec spec
 
   # let's make rpmlint happy
   find lib/bundler/vendor/ -name '*.rb' -exec chmod 644 {} \;
@@ -103,6 +103,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Fri Feb 15 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.2.4-1%{?dist}
+- New upstream version
+
 * Mon Dec 10 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.2.3-1%{?dist}
 - New upstream version
 

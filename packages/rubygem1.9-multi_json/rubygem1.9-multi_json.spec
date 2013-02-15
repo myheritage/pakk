@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-multi_json
-Version:        1.5.1
+Version:        1.6.1
 Release:        1%{?dist}
 Summary:        A gem to provide swappable JSON backends
 
@@ -67,6 +67,8 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG.md
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CONTRIBUTING.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
@@ -79,6 +81,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Fri Feb 15 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.6.1-1%{?dist}
+- New upstream version
+
 * Thu Feb 12 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.5.1-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mysql
-Version:        2.9.0
+Version:        2.9.1
 Release:        1%{?dist}
 Summary:        MySQL Ruby driver
 
@@ -87,6 +87,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Feb 18 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.9.1-1%{?dist}
+- New upstream version
+
 * Mon Dec 10 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.9.0-1%{?dist}
 - New upstream version
 

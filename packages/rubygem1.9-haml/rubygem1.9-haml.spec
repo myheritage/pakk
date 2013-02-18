@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-haml
-Version:        3.1.7
+Version:        3.1.8
 Release:        1%{?dist}
 Summary:        Elegant, structured XHTML/XML templating engine
 
@@ -99,6 +99,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Feb 18 2013 Eric-Olivier Lamey <pakk@96b.it> - 3.1.8-1%{?dist}
+- New upstream version
+
 * Sat Aug 25 2012 Eric-Olivier Lamey <pakk@96b.it> - 3.1.7-1%{?dist}
 - New upstream version
 

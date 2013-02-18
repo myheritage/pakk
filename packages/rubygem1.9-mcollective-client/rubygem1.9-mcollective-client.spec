@@ -13,7 +13,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mcollective-client
-Version:        2.2.2
+Version:        2.2.3
 Release:        1%{?dist}
 Summary:        Client libraries for The Marionette Collective
 
@@ -180,6 +180,9 @@ fi
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Feb 18 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.2.3-1%{?dist}
+- New upstream version
+
 * Sat Jan 19 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.2.2-1%{?dist}
 - New upstream version
 

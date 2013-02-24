@@ -19,7 +19,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           collectd5
-Version:        5.2.0
+Version:        5.2.1
 Release:        1%{?dist}
 Summary:        Statistics collection daemon for filling RRD files
 
@@ -592,8 +592,9 @@ fi
 %{_datadir}/%{name}/types.db
 %{_libdir}/*.so.*
 %doc %{_mandir}/man1/%{name}.1*
-%doc %{_mandir}/man1/%{name}ctl.1*
 %doc %{_mandir}/man1/%{name}-nagios.1*
+%doc %{_mandir}/man1/%{name}-tg.1*
+%doc %{_mandir}/man1/%{name}ctl.1*
 %doc %{_mandir}/man1/%{name}mon.1*
 %doc %{_mandir}/man5/%{name}.conf.5*
 %doc %{_mandir}/man5/%{name}-email.5*
@@ -691,6 +692,9 @@ fi
 
 #-----------------------------------------------------------------------------
 %changelog
+* Sat Feb 23 2013 Eric-Olivier Lamey <pakk@96b.it> - 5.2.1-1%{?dist}
+- New upstream version
+
 * Sun Nov 18 2012 Eric-Olivier Lamey <pakk@96b.it> - 5.2.0-1%{?dist}
 - New upstream version
 

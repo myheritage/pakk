@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bundler
-Version:        1.2.4
+Version:        1.3.0
 Release:        1%{?dist}
 Summary:        The best way to manage your application's dependencies
 
@@ -83,8 +83,10 @@ rm -rf %{buildroot}
 %files
 %defattr(-, root, root, -)
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG.md
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CONTRIBUTE.md
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CONTRIBUTING.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/ISSUES.md
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/UPGRADING.md
 %{_bindir}/*
@@ -103,6 +105,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Feb 26 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.3.0-1%{?dist}
+- New upstream version
+
 * Fri Feb 15 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.2.4-1%{?dist}
 - New upstream version
 

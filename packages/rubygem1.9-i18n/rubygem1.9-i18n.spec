@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-i18n
-Version:        0.6.1
+Version:        0.6.2
 Release:        1%{?dist}
 Summary:        New wave Internationalization support for Ruby
 
@@ -78,5 +78,8 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Feb 26 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.6.2-1%{?dist}
+- New upstream version
+
 * Thu Dec 13 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.6.1-1%{?dist}
 - Initial package creation

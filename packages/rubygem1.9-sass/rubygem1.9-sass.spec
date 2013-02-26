@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-sass
-Version:        3.2.5
+Version:        3.2.6
 Release:        1%{?dist}
 Summary:        Extension of CSS3
 
@@ -101,6 +101,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Feb 26 2013 Eric-Olivier Lamey <pakk@96b.it> - 3.2.6-1%{?dist}
+- New upstream version
+
 * Sat Jan 5 2013 Eric-Olivier Lamey <pakk@96b.it> - 3.2.5-1%{?dist}
 - New upstream version
 

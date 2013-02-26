@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-escape_utils
-Version:        0.2.4
+Version:        0.3.0
 Release:        1%{?dist}
 Summary:        Faster string escaping routines for your web apps
 
@@ -64,13 +64,8 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .gitignore .require_paths .rspec Rakefile Gemfile escape_utils.gemspec ext spec
-  strip lib/*.so
-popd
-
-pushd %{buildroot}%{ruby_sitelib}
-  sed -i -e 's|%{buildroot}||g' \
-    doc/%{gemname}-%{version}/rdoc/ext/escape_utils/Makefile.html
+  rm -rf .??* Rakefile Gemfile escape_utils.gemspec ext spec test
+  strip lib/%{gemname}/*.so
 popd
 
 
@@ -96,6 +91,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Feb 26 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.3.0-1%{?dist}
+- New upstream version
+
 * Fri Sep 9 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.2.4-1%{?dist}
 - New upstream version
 

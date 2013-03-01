@@ -1,0 +1,27 @@
+diff -uNr ruby-2.0.0-p0.orig/lib/rubygems/config_file.rb ruby-2.0.0-p0/lib/rubygems/config_file.rb
+--- ruby-2.0.0-p0.orig/lib/rubygems/config_file.rb	2013-02-08 01:15:54.000000000 +0000
++++ ruby-2.0.0-p0/lib/rubygems/config_file.rb	2013-02-28 10:03:49.566288876 +0000
+@@ -85,7 +85,7 @@
+ 
+   # :startdoc:
+ 
+-  SYSTEM_WIDE_CONFIG_FILE = File.join system_config_path, 'gemrc'
++  SYSTEM_WIDE_CONFIG_FILE = File.join system_config_path, 'gemrc2.0'
+ 
+   ##
+   # List of arguments supplied to the config file object.
+diff -uNr ruby-2.0.0-p0.orig/lib/rubygems/defaults.rb ruby-2.0.0-p0/lib/rubygems/defaults.rb
+--- ruby-2.0.0-p0.orig/lib/rubygems/defaults.rb	2012-12-11 02:32:35.000000000 +0000
++++ ruby-2.0.0-p0/lib/rubygems/defaults.rb	2013-02-28 10:02:44.993035748 +0000
+@@ -69,9 +69,9 @@
+ 
+   def self.default_path
+     if Gem.user_home && File.exist?(Gem.user_home) then
+-      [user_dir, default_dir]
++      [user_dir, default_dir, ConfigMap[:sitelibdir]]
+     else
+-      [default_dir]
++      [default_dir, ConfigMap[:sitelibdir]]
+     end
+   end
+ 

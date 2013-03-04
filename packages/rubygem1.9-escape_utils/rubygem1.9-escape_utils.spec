@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-escape_utils
-Version:        0.3.0
+Version:        0.3.2
 Release:        1%{?dist}
 Summary:        Faster string escaping routines for your web apps
 
@@ -91,6 +91,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Mar 4 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.3.2-1%{?dist}
+- New upstream version
+
 * Tue Feb 26 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.3.0-1%{?dist}
 - New upstream version
 

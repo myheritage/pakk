@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-eventmachine
-Version:        1.0.1
+Version:        1.0.3
 Release:        1%{?dist}
 Summary:        Ruby/EventMachine library
 
@@ -95,6 +95,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Mar 11 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.0.3-1%{?dist}
+- New upstream version
+
 * Mon Mar 4 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.0.1-1%{?dist}
 - New upstream version
 

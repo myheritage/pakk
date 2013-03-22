@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-activesupport
-Version:        3.2.12
+Version:        3.2.13
 Release:        1%{?dist}
 Summary:        Support libraries and Ruby core extensions from Rails
 
@@ -78,6 +78,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Fri Mar 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 3.2.13-1%{?dist}
+- New upstream version
+
 * Tue Feb 12 2013 Eric-Olivier Lamey <pakk@96b.it> - 3.2.12-1%{?dist}
 - New upstream version
 

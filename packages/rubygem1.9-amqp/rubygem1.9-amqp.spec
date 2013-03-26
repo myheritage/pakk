@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-amqp
-Version:        0.9.10
+Version:        1.0.0
 Release:        1%{?dist}
 Summary:        Implementation of the AMQP protocol in Ruby/EventMachine
 
@@ -26,7 +26,7 @@ BuildArch:      noarch
 BuildRequires:  ruby1.9-devel
 
 Requires:       ruby1.9
-Requires:       rubygem1.9-amq-client >= 0.9.12
+Requires:       rubygem1.9-amq-client >= 1.0.0
 Requires:       rubygem1.9-amq-protocol >= 1.2.0
 Requires:       rubygem1.9-eventmachine
 
@@ -83,6 +83,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Mar 26 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.0.0-1%{?dist}
+- New upstream version
+
 * Mon Mar 11 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.9.10-1%{?dist}
 - New upstream version
 

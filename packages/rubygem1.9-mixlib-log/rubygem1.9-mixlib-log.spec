@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mixlib-log
-Version:        1.4.1
+Version:        1.6.0
 Release:        1%{?dist}
 Summary:        Provides a simple mixin for log functionality
 
@@ -78,6 +78,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Fri Apr 5 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.6.0-1%{?dist}
+- New upstream version
+
 * Sat Jun 9 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.4.1-1%{?dist}
 - New upstream version
 

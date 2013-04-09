@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-moneta
-Version:        0.7.14
+Version:        0.7.15
 Release:        1%{?dist}
 Summary:        Unified interface to key/value stores
 
@@ -66,6 +66,7 @@ rm -rf %{buildroot}
 %files
 %defattr(-, root, root, -)
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGES
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CONTRIBUTORS
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
@@ -78,6 +79,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Apr 9 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.7.15-1%{?dist}
+- New upstream version
+
 * Fri Feb 8 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.7.14-1%{?dist}
 - New upstream version
 

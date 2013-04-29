@@ -12,8 +12,8 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-uuidtools
-Version:        2.1.3
-Release:        2%{?dist}
+Version:        2.1.4
+Release:        1%{?dist}
 Summary:        Simple universally unique ID generation library
 
 Group:          Development/Languages
@@ -80,6 +80,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Apr 29 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.1.4-1%{?dist}
+- New upstream version
+
 * Wed Jul 18 2012 Eric-Olivier Lamey <pakk@96b.it> - 2.1.3-2%{?dist}
 - New upstream version
 

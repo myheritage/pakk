@@ -10,7 +10,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           nginx
-Version:        1.2.8
+Version:        1.4.0
 Release:        1%{?dist}
 Summary:        A HTTP and reverse proxy server
 
@@ -65,10 +65,12 @@ export CFLAGS="%{optflags}"
   --with-http_addition_module \
   --with-http_degradation_module \
   --with-http_flv_module \
+  --with-http_gunzip_module \
   --with-http_gzip_static_module \
   --with-http_mp4_module \
   --with-http_realip_module \
   --with-http_secure_link_module \
+  --with-http_spdy_module \
   --with-http_ssl_module \
   --with-http_stub_status_module \
   --with-http_sub_module
@@ -156,6 +158,9 @@ fi
 
 #-----------------------------------------------------------------------------
 %changelog
+* Thu May 2 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.4.0-1%{?dist}
+- New upstream version
+
 * Tue Apr 2 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.2.8-1%{?dist}
 - New upstream version
 

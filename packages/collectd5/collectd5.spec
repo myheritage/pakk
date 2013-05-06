@@ -19,7 +19,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           collectd5
-Version:        5.2.1
+Version:        5.3.0
 Release:        1%{?dist}
 Summary:        Statistics collection daemon for filling RRD files
 
@@ -258,6 +258,23 @@ Requires:       %{name} = %{version}
 This plugin for collectd provides redis support.
 
 
+%if 0%{?rhel} >= 6
+#-----------------------------------------------------------------------------
+# -riemann package
+#-----------------------------------------------------------------------------
+%package riemann
+Summary:        Riemann module for collectd
+Group:          System Environment/Daemons
+
+BuildRequires:  protobuf-c-devel
+
+Requires:       %{name} = %{version}
+
+%description riemann
+This plugin for collectd provides riemann support.
+%endif
+
+
 #-----------------------------------------------------------------------------
 # -rrdtool package
 #-----------------------------------------------------------------------------
@@ -374,6 +391,7 @@ export CFLAGS="%{optflags} -DLT_LAZY_OR_NOW='RTLD_LAZY|RTLD_GLOBAL'"
   --with-perl-bindings=INSTALLDIRS=vendor \
   --with-python=/usr/bin/python2.6 \
   --disable-static \
+  --disable-amqp \
   --disable-ascent \
   --disable-apple_sensors \
   --disable-gmond \
@@ -386,40 +404,24 @@ export CFLAGS="%{optflags} -DLT_LAZY_OR_NOW='RTLD_LAZY|RTLD_GLOBAL'"
   --disable-onewire \
   --disable-oracle \
   --disable-pinba \
+  --disable-pf \
   --disable-routeros \
   --disable-rrdcached \
   --disable-tape \
   --disable-tokyotyrant \
   --disable-xmms \
   --disable-zfs_arc \
-  --enable-apache \
-  --enable-apcups \
-  --enable-battery \
-  --enable-bind \
-  --enable-conntrack \
-  --enable-contextswitch \
-  --enable-cpu \
-  --enable-cpufreq \
-  --enable-csv \
-  --enable-curl \
 %if %{!?_without_yajl:1}0
   --enable-curl_json  \
+%else
+  --disable-curl_json  \
 %endif
   --enable-curl_xml \
-  --enable-dbi  \
-  --enable-df \
-  --enable-disk \
-  --enable-dns \
-  --enable-email \
-  --enable-entropy \
 %if 0%{?rhel} >= 6
   --enable-ethstat \
+%else
+  --disable-ethstat \
 %endif
-  --enable-exec \
-  --enable-filecount \
-  --enable-fscache \
-  --enable-hddtemp \
-  --enable-interface \
 %if 0%{?rhel} >= 6
   --enable-iptables \
   --enable-ipvs \
@@ -427,70 +429,7 @@ export CFLAGS="%{optflags} -DLT_LAZY_OR_NOW='RTLD_LAZY|RTLD_GLOBAL'"
   --disable-iptables \
   --disable-ipvs \
 %endif
-  --enable-irq \
-  --enable-ipmi \
-  --with-java=/usr/lib/jvm/java/ \
-  --enable-java \
-  --enable-libvirt \
-  --enable-load \
-  --enable-logfile \
-  --enable-madwifi \
-  --enable-match_empty_counter \
-  --enable-match_hashed \
-  --enable-match_regex \
-  --enable-match_timediff \
-  --enable-match_value \
-  --enable-mbmon \
-  --enable-md \
-  --enable-memcachec \
-  --enable-memcached \
-  --enable-memory \
-  --enable-multimeter \
-  --enable-mysql \
-  --enable-network \
-  --enable-nfs \
-  --enable-nginx \
-  --enable-notify_email \
-  --enable-ntpd \
-  --enable-numa \
-  --enable-olsrd \
-  --enable-openvpn \
-  --enable-perl \
-  --enable-ping \
-  --enable-postgresql \
-  --enable-powerdns \
-  --enable-processes \
-  --enable-protocols \
-  --enable-python \
-  --enable-redis \
-  --enable-rrdtool \
-  --enable-sensors \
-  --enable-serial \
-  --enable-snmp \
-  --enable-swap \
-  --enable-syslog \
-  --enable-table \
-  --enable-tail \
-  --enable-target_notification \
-  --enable-target_replace \
-  --enable-target_scale \
-  --enable-target_set \
-  --enable-tcpconns \
-  --enable-teamspeak2 \
-  --enable-ted \
-  --enable-thermal \
-  --enable-unixsock \
-  --enable-uptime \
-  --enable-users \
-  --enable-uuid \
-  --enable-varnish \
-  --enable-vmem \
-  --enable-vserver \
-  --enable-wireless \
-  --enable-write_graphite \
-  --enable-write_http \
-  --enable-write_mongodb \
-  --enable-write_redis
+  --with-java=/usr/lib/jvm/java/
 
 %{__make} %{?_smp_mflags}
 
@@ -517,10 +456,8 @@ install -d -m0755 %{buildroot}%{_datadir}/%{name}/collection3/
 
 %if 0%{?rhel} >= 6
 install -d -m0755 %{buildroot}%{perl_vendorlib}
-mv %{buildroot}/usr/lib/perl5/* %{buildroot}%{perl_vendorlib}/
+mv %{buildroot}%{_libdir}/perl5/* %{buildroot}%{perl_vendorlib}/
 rm -rf %{buildroot}%{_libdir}/perl5
-mv %{buildroot}/usr/man/man3 %{buildroot}%{_mandir}/
-rm -rf %{buildroot}/usr/man
 %endif
 
 find %{buildroot} -name .packlist -exec rm {} \;
@@ -667,6 +604,12 @@ fi
 %{plugindir}/redis.so
 %{plugindir}/write_redis.so
 
+%if 0%{?rhel} >= 6
+%files riemann
+%defattr(-, root, root, -)
+%{plugindir}/write_riemann.so
+%endif
+
 %files rrdtool
 %defattr(-, root, root, -)
 %{plugindir}/rrdtool.so
@@ -692,6 +635,9 @@ fi
 
 #-----------------------------------------------------------------------------
 %changelog
+* Mon May 6 2013 Eric-Olivier Lamey <pakk@96b.it> - 5.3.0-1%{?dist}
+- New upstream version
+
 * Sat Feb 23 2013 Eric-Olivier Lamey <pakk@96b.it> - 5.2.1-1%{?dist}
 - New upstream version
 

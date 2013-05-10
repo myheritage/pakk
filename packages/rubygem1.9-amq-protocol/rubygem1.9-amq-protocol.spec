@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-amq-protocol
-Version:        1.4.0
+Version:        1.5.0
 Release:        1%{?dist}
 Summary:        AMQP 0.9.1 serialization library for Ruby
 
@@ -81,6 +81,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Fri May 10 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.5.0-1%{?dist}
+- New upstream version
+
 * Thu May 2 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.4.0-1%{?dist}
 - New upstream version
 

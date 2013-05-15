@@ -4,7 +4,7 @@
 
 %global ruby_major          2.0
 %global ruby_version        2.0.0
-%global ruby_patchlevel     p0
+%global ruby_patchlevel     p195
 %global ruby_compatibility  2.0.0
 %global program_suffix      %{ruby_major}
 
@@ -28,7 +28,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  db4-devel
 BuildRequires:  gdbm-devel
 BuildRequires:  libffi-devel
-BuildRequires:  libyaml-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  readline-devel
@@ -173,5 +172,8 @@ rm -rf %{buildroot}
 
 #-----------------------------------------------------------------------------
 %changelog
+* Tue May 14 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.0.0.p195-1%{?dist}
+- New upstream version
+
 * Wed Feb 27 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.0.0.p0-1%{?dist}
 - Initial package creation

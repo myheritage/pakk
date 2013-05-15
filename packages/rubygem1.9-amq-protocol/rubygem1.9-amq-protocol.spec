@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-amq-protocol
-Version:        1.5.0
+Version:        1.6.0
 Release:        1%{?dist}
 Summary:        AMQP 0.9.1 serialization library for Ruby
 
@@ -69,7 +69,6 @@ rm -rf %{buildroot}
 %defattr(-, root, root, -)
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/ChangeLog.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/PROFILING.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
@@ -77,10 +76,15 @@ rm -rf %{buildroot}
 
 %files doc
 %doc %{ruby_sitelib}/doc/%{gemname}-%{version}
+%{ruby_sitelib}/gems/%{gemname}-%{version}/benchmarks
+%{ruby_sitelib}/gems/%{gemname}-%{version}/profiling
 
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed May 15 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.6.0-1%{?dist}
+- New upstream version
+
 * Fri May 10 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.5.0-1%{?dist}
 - New upstream version
 

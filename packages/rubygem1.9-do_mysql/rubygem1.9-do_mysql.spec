@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-do_mysql
-Version:        0.10.12
+Version:        0.10.13
 Release:        1%{?dist}
 Summary:        DataObjects MySQL Driver
 
@@ -86,6 +86,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue May 28 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.10.13-1%{?dist}
+- New upstream version
+
 * Mon Jan 28 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.10.12-1%{?dist}
 - New upstream version
 

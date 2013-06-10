@@ -22,7 +22,7 @@ License:        ASL 2.0
 URL:            https://docs.puppetlabs.com/mcollective/
 Source0:        http://downloads.puppetlabs.com/%{upstream_name}/%{upstream_name}-%{version}.tgz
 Source1:        http://rubygems.org/downloads/%{gemname}-%{version}.gem
-Source2:        opscodeohai_facts.rb
+Source2:        https://raw.github.com/puppetlabs/mcollective-plugins/master/facts/ohai/opscodeohai_facts.rb
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildArch:      noarch

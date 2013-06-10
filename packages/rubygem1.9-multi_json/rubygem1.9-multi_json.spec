@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-multi_json
-Version:        1.7.5
+Version:        1.7.6
 Release:        1%{?dist}
 Summary:        A gem to provide swappable JSON backends
 
@@ -81,6 +81,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Jun 10 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.7.6-1%{?dist}
+- New upstream version
+
 * Sun Jun 2 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.7.5-1%{?dist}
 - New upstream version
 

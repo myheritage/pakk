@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-dm-core
-Version:        1.2.0
+Version:        1.2.1
 Release:        1%{?dist}
 Summary:        An Object/Relational Mapper for Ruby
 
@@ -26,7 +26,7 @@ BuildArch:      noarch
 BuildRequires:  ruby1.9-devel
 
 Requires:       ruby1.9
-Requires:       rubygem1.9-addressable >= 2.2.6
+Requires:       rubygem1.9-addressable >= 2.3.0
 
 %description
 An Object/Relational Mapper for Ruby.
@@ -54,7 +54,7 @@ gem1.9 install --local --force \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .autotest .document .gitignore .yardopts Rakefile dm-core.gemspec script spec tasks
+  rm -rf .??* Rakefile dm-core.gemspec script spec tasks
 popd
 
 
@@ -80,6 +80,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Jun 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.2.1-1%{?dist}
+- New upstream version
+
 * Sun Oct 23 2011 Eric-Olivier Lamey <pakk@96b.it> - 1.2.0-1%{?dist}
 - New upstream version
 

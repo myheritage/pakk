@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-em-socksify
-Version:        0.2.1
+Version:        0.3.0
 Release:        1%{?dist}
 Summary:        EventMachine SOCKSify shim
 
@@ -80,5 +80,8 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Jun 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.3.0-1%{?dist}
+- New upstream release
+
 * Tue Nov 13 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.2.1-1%{?dist}
 - Initial package creation

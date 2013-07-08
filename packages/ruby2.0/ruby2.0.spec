@@ -4,7 +4,7 @@
 
 %global ruby_major          2.0
 %global ruby_version        2.0.0
-%global ruby_patchlevel     p195
+%global ruby_patchlevel     p247
 %global ruby_compatibility  2.0.0
 %global program_suffix      %{ruby_major}
 
@@ -172,6 +172,9 @@ rm -rf %{buildroot}
 
 #-----------------------------------------------------------------------------
 %changelog
+* Fri Jun 23 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.0.0.p247-1%{?dist}
+- New upstream version
+
 * Tue May 14 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.0.0.p195-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bcrypt
-Version:        3.0.1
+Version:        3.1.0
 Release:        1%{?dist}
 Summary:        Provides a simple, humane wrapper for safely handling passwords
 
@@ -57,7 +57,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .gitignore .rspec Gemfile* Rakefile ext bcrypt-ruby.gemspec spec
+  rm -rf .??* Gemfile* Rakefile ext bcrypt-ruby.gemspec spec
   strip lib/*.so
 popd
 
@@ -83,6 +83,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Jul 8 2013 Eric-Olivier Lamey <pakk@96b.it> - 3.1.0-1%{?dist}
+- New upstream version
+
 * Wed Sep 14 2011 Eric-Olivier Lamey <pakk@96b.it> - 3.0.1-1%{?dist}
 - New upstream version
 

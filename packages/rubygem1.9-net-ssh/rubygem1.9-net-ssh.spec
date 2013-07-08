@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-net-ssh
-Version:        2.6.7
+Version:        2.6.8
 Release:        1%{?dist}
 Summary:        Pure-Ruby implementation of the SSH2 client protocol
 
@@ -84,6 +84,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Mon Jul 8 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.6.8-1%{?dist}
+- New upstream version
+
 * Tue Apr 23 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.6.7-1%{?dist}
 - New upstream version
 

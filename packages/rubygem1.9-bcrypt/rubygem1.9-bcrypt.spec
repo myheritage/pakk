@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bcrypt
-Version:        3.1.0
+Version:        3.1.1
 Release:        1%{?dist}
 Summary:        Provides a simple, humane wrapper for safely handling passwords
 
@@ -83,6 +83,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Fri Jul 12 2013 Eric-Olivier Lamey <pakk@96b.it> - 3.1.1-1%{?dist}
+- New upstream version
+
 * Mon Jul 8 2013 Eric-Olivier Lamey <pakk@96b.it> - 3.1.0-1%{?dist}
 - New upstream version
 

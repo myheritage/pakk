@@ -19,7 +19,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           collectd5
-Version:        5.3.0
+Version:        5.3.1
 Release:        1%{?dist}
 Summary:        Statistics collection daemon for filling RRD files
 
@@ -419,8 +419,10 @@ export CFLAGS="%{optflags} -DLT_LAZY_OR_NOW='RTLD_LAZY|RTLD_GLOBAL'"
   --enable-curl_xml \
 %if 0%{?rhel} >= 6
   --enable-ethstat \
+  --enable-dns \
 %else
   --disable-ethstat \
+  --disable-dns \
 %endif
 %if 0%{?rhel} >= 6
   --enable-iptables \
@@ -635,6 +637,9 @@ fi
 
 #-----------------------------------------------------------------------------
 %changelog
+* Tue Jul 16 2013 Eric-Olivier Lamey <pakk@96b.it> - 5.3.1-1%{?dist}
+- New upstream version
+
 * Mon May 6 2013 Eric-Olivier Lamey <pakk@96b.it> - 5.3.0-1%{?dist}
 - New upstream version
 

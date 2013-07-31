@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-stomp
-Version:        1.2.10
+Version:        1.2.11
 Release:        1%{?dist}
 Summary:        Ruby client for the Stomp messaging protocol
 
@@ -88,6 +88,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed Jul 31 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.2.11-1%{?dist}
+- New upstream version
+
 * Fri Jul 12 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.2.10-1%{?dist}
 - New upstream version
 

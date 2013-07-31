@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mysql2
-Version:        0.3.11
+Version:        0.3.13
 Release:        1%{?dist}
 Summary:        A simple, fast Mysql library for Ruby, binding to libmysql
 
@@ -61,7 +61,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .??* Gemfile Rakefile ext mysql2.gemspec spec tasks
+  rm -rf .??* Gemfile Rakefile ext mysql2.gemspec spec support tasks
   strip lib/mysql2/*.so
 popd
 
@@ -74,7 +74,6 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/MIT-LICENSE
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
@@ -83,12 +82,14 @@ rm -rf %{buildroot}
 
 %files doc
 %doc %{ruby_sitelib}/doc/%{gemname}-%{version}
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/benchmark
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/examples
 
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed Jul 31 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.3.13-1%{?dist}
+- New upstream version
+
 * Wed Dec 7 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.3.11-1%{?dist}
 - New upstream version
 

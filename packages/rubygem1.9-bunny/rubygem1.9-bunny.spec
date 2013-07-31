@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bunny
-Version:        0.8.0
+Version:        0.9.8
 Release:        1%{?dist}
 Summary:        Synchronous Ruby AMQP client
 
@@ -26,6 +26,7 @@ BuildArch:      noarch
 BuildRequires:  ruby1.9-devel
 
 Requires:       ruby1.9
+Requires:       rubygem1.9-amq-protocol >= 1.6.0
 
 %description
 A synchronous Ruby AMQP client that enables interaction with AMQP-compliant
@@ -48,13 +49,13 @@ Documentation for %{name} in rdoc and ri format.
 #-------------------------------------------------------------------------------
 %install
 rm -rf %{buildroot}
-gem1.9 install --local \
+gem1.9 install --local --force \
   --install-dir %{buildroot}%{ruby_sitelib} \
   %{SOURCE0}
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .??* Gemfile* Rakefile *.gemspec ext spec
+  rm -rf .??* Gemfile* Rakefile *.gemspec benchmarks bin/ci ext profiling spec
 popd
 
 
@@ -66,9 +67,9 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/ChangeLog.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.textile
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
@@ -80,6 +81,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed Jul 31 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.9.8-1%{?dist}
+- New upstream version
+
 * Wed Jun 27 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.8.0-1%{?dist}
 - New upstream version
 

@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-ohai
-Version:        6.16.0
+Version:        6.18.0
 Release:        1%{?dist}
 Summary:        Profiles your system and emits JSON
 
@@ -96,6 +96,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Wed Jul 31 2013 Eric-Olivier Lamey <pakk@96b.it> - 6.18.0-1%{?dist}
+- New upstream version
+
 * Sat Jan 19 2013 Eric-Olivier Lamey <pakk@96b.it> - 6.16.0-1%{?dist}
 - New upstream version
 

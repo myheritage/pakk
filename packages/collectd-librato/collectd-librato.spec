@@ -2,21 +2,19 @@
 # collectd-librato.spec
 #-----------------------------------------------------------------------------
 
-%global gitrev 9e7da52
-
 
 #-----------------------------------------------------------------------------
 # Main package
 #-----------------------------------------------------------------------------
 Name:           collectd-librato
-Version:        0.0.5
-Release:        2%{?dist}
+Version:        0.0.8
+Release:        1%{?dist}
 Summary:        collectd plugin that publishes collectd values to Librato Metrics
 
 Group:          System Environment/Daemons
 License:        ASL 2.0
 URL:            https://github.com/librato/collectd-librato
-Source0:        https://github.com/librato/%{name}/tarball/v%{version}
+Source0:        https://github.com/librato/%{name}/tarball/v%{version}.tar.gz
 Source1:        %{name}.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -31,7 +29,7 @@ time-series data service.
 
 #-----------------------------------------------------------------------------
 %prep
-%setup -q -n librato-collectd-librato-%{gitrev}
+%setup -q
 
 
 #-----------------------------------------------------------------------------
@@ -63,6 +61,9 @@ rm -rf %{buildroot}
 
 #-----------------------------------------------------------------------------
 %changelog
+* Sun Aug 11 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.0.8-1%{?dist}
+- New upstream version
+
 * Tue May 1 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.0.5-2%{?dist}
 - collectd in now collectd5
 

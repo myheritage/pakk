@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-treetop
-Version:        1.4.14
+Version:        1.4.15
 Release:        1%{?dist}
 Summary:        Ruby-based text parsing and interpretation DSL
 
@@ -88,6 +88,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Thu Aug 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.4.15-1%{?dist}
+- New upstream version
+
 * Mon Jun 10 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.4.14-1%{?dist}
 - New upstream version
 

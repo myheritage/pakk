@@ -19,7 +19,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           collectd5
-Version:        5.3.1
+Version:        5.4.0
 Release:        1%{?dist}
 Summary:        Statistics collection daemon for filling RRD files
 
@@ -139,6 +139,23 @@ This plugin for collectd provides libvirt support.
 
 
 #-----------------------------------------------------------------------------
+# -lvm package
+#-----------------------------------------------------------------------------
+%if 0%{?rhel} >= 6
+%package lvm
+Summary:        LVM module for collectd
+Group:          System Environment/Daemons
+
+BuildRequires:  lvm2-devel
+
+Requires:       %{name} = %{version}
+
+%description lvm
+This plugin for collectd provides LVM support.
+%endif
+
+
+#-----------------------------------------------------------------------------
 # -memcachec package
 #-----------------------------------------------------------------------------
 %package memcachec
@@ -181,6 +198,21 @@ Requires:       %{name} = %{version}
 
 %description mysql
 This plugin for collectd provides MySQL support.
+
+
+#-----------------------------------------------------------------------------
+# -netlink package
+#-----------------------------------------------------------------------------
+%package netlink
+Summary:        Netlink module for collectd
+Group:          System Environment/Daemons
+
+BuildRequires:  libmnl-devel
+
+Requires:       %{name} = %{version}
+
+%description netlink
+This plugin for collectd provides netlink support.
 
 
 #-----------------------------------------------------------------------------
@@ -391,6 +423,7 @@ export CFLAGS="%{optflags} -DLT_LAZY_OR_NOW='RTLD_LAZY|RTLD_GLOBAL'"
   --with-perl-bindings=INSTALLDIRS=vendor \
   --with-python=/usr/bin/python2.6 \
   --disable-static \
+  --disable-aquaero \
   --disable-amqp \
   --disable-ascent \
   --disable-apple_sensors \
@@ -398,7 +431,6 @@ export CFLAGS="%{optflags} -DLT_LAZY_OR_NOW='RTLD_LAZY|RTLD_GLOBAL'"
   --disable-lpar \
   --disable-modbus \
   --disable-netapp \
-  --disable-netlink \
   --disable-notify_desktop \
   --disable-nut \
   --disable-onewire \
@@ -515,8 +547,12 @@ fi
 %exclude %{plugindir}/ipmi.so
 %exclude %{plugindir}/java.so
 %exclude %{plugindir}/libvirt.so
+%if 0%{?rhel} >= 6
+%exclude %{plugindir}/lvm.so
+%endif
 %exclude %{plugindir}/memcachec.so
 %exclude %{plugindir}/mysql.so
+%exclude %{plugindir}/netlink.so
 %exclude %{plugindir}/notify_email.so
 %exclude %{plugindir}/perl.so
 %exclude %{plugindir}/ping.so
@@ -567,6 +603,12 @@ fi
 %defattr(-, root, root, -)
 %{plugindir}/libvirt.so
 
+%if 0%{?rhel} >= 6
+%files lvm
+%defattr(-, root, root, -)
+%{plugindir}/lvm.so
+%endif
+
 %files memcachec
 %defattr(-, root, root, -)
 %{plugindir}/memcachec.so
@@ -578,6 +620,10 @@ fi
 %files mysql
 %defattr(-, root, root, -)
 %{plugindir}/mysql.so
+
+%files netlink
+%defattr(-, root, root, -)
+%{plugindir}/netlink.so
 
 %files notify_email
 %defattr(-, root, root, -)

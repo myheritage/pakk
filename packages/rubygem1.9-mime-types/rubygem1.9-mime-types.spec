@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mime-types
-Version:        1.23
+Version:        1.24
 Release:        1%{?dist}
 Summary:        Ruby implementation of a MIME Types information library
 
@@ -81,6 +81,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Thu Aug 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.24-1%{?dist}
+- New upstream version
+
 * Tue Apr 23 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.23-1%{?dist}
 - New upstream version
 

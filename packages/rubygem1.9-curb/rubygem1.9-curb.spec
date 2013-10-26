@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-curb
-Version:        0.8.4
+Version:        0.8.5
 Release:        1%{?dist}
 Summary:        Libcurl bindings for Ruby
 
@@ -89,6 +89,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Oct 26 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.8.5-1%{?dist}
+- New upstream version
+
 * Mon May 20 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.8.4-1%{?dist}
 - New upstream version
 

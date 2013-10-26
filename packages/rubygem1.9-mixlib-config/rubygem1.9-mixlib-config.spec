@@ -12,8 +12,8 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mixlib-config
-Version:        1.1.2
-Release:        2%{?dist}
+Version:        2.0.0
+Release:        1%{?dist}
 Summary:        Class based config mixin, similar to the one found in Chef
 
 Group:          Development/Languages
@@ -67,8 +67,7 @@ rm -rf %{buildroot}
 %defattr(-, root, root, -)
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/NOTICE
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.rdoc
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/VERSION.yml
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
@@ -79,6 +78,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Oct 26 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.0.0-1%{?dist}
+- New upstream version
+
 * Sun Mar 6 2011 Eric-Olivier Lamey <pakk@96b.it> - 1.1.2-2%{?dist}
 - Massive rebuild to change pakk's packages requirements
 

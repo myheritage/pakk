@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mysql2
-Version:        0.3.13
+Version:        0.3.14
 Release:        1%{?dist}
 Summary:        A simple, fast Mysql library for Ruby, binding to libmysql
 
@@ -87,6 +87,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Dec 3 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.3.14-1%{?dist}
+- New upstream version
+
 * Wed Jul 31 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.3.13-1%{?dist}
 - New upstream version
 

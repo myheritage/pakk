@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bunny
-Version:        0.10.8
+Version:        1.0.5
 Release:        1%{?dist}
 Summary:        Synchronous Ruby AMQP client
 
@@ -26,7 +26,7 @@ BuildArch:      noarch
 BuildRequires:  ruby1.9-devel
 
 Requires:       ruby1.9
-Requires:       rubygem1.9-amq-protocol >= 1.6.0
+Requires:       rubygem1.9-amq-protocol >= 1.9.0
 
 %description
 A synchronous Ruby AMQP client that enables interaction with AMQP-compliant
@@ -55,7 +55,7 @@ gem1.9 install --local --force \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .??* Gemfile* Rakefile *.gemspec benchmarks bin/ci ext profiling spec
+  rm -rf .??* Gemfile* Rakefile *.gemspec benchmarks bin/ci ext profiling repl spec
 popd
 
 
@@ -81,6 +81,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Dec 1 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.0.5-1%{?dist}
+- New upstream version
+
 * Sat Oct 26 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.10.8-1%{?dist}
 - New upstream version
 

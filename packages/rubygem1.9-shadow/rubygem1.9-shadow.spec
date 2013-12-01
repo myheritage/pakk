@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-shadow
-Version:        2.2.0
+Version:        2.3.1
 Release:        1%{?dist}
 Summary:        Access to shadow passwords on Linux and Solaris
 
@@ -58,7 +58,7 @@ gem1.9 install --local \
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf depend extconf.rb MANIFEST Makefile mkmf.log shadow.* *.gemspec
+  rm -rf extconf.rb MANIFEST Makefile mkmf.log pwd shadow shadow.* *.gemspec
   strip lib/*.so
 popd
 
@@ -72,6 +72,7 @@ rm -rf %{buildroot}
 %files
 %defattr(-, root, root, -)
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/HISTORY
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.euc
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
@@ -84,6 +85,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Dec 3 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.3.1-1%{?dist}
+- New upstream version
+
 * Tue Feb 26 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.2.0-1%{?dist}
 - New upstream version
 

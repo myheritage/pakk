@@ -12,9 +12,9 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bson
-Version:        1.9.2
+Version:        2.0.0
 Release:        1%{?dist}
-Summary:        Ruby implementation of BSON
+Summary:        Ruby driver for MongoDB
 
 Group:          Development/Languages
 License:        ASL 2.0
@@ -22,16 +22,12 @@ URL:            http://www.mongodb.org
 Source0:        http://rubygems.org/downloads/%{gemname}-%{version}.gem
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-BuildArch:      noarch
 BuildRequires:  ruby1.9-devel
 
 Requires:       ruby1.9
-Requires:       rubygem1.9-activesupport
 
 %description
-A Ruby BSON implementation for MongoDB. For more information about Mongo,
-see http://www.mongodb.org. For more information on BSON,
-see http://www.bsonspec.org.
+Ruby driver for MongoDB.
 
 
 #-----------------------------------------------------------------------------
@@ -40,6 +36,10 @@ see http://www.bsonspec.org.
 %package doc
 Summary:        Documentation for %{name}
 Group:          Documentation
+
+%if 0%{?rhel} >= 6
+BuildArch:      noarch
+%endif
 
 Requires:       %{name} = %{version}
 
@@ -50,19 +50,16 @@ Documentation for %{name} in rdoc and ri format.
 #-------------------------------------------------------------------------------
 %install
 rm -rf %{buildroot}
-gem1.9 install --local --force \
+export CONFIGURE_ARGS="--with-cflags='%{optflags}'"
+gem1.9 install --local \
   --install-dir %{buildroot}%{ruby_sitelib} \
   %{SOURCE0}
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf Rakefile ext bson.gemspec test
-  sed -i -e 's|/usr/bin/ruby|/usr/bin/ruby1.9|g' bin/*
+  rm -rf NOTICE Rakefile ext spec
+  find lib -name *.so -exec strip {} \;
 popd
-
-mkdir -p %{buildroot}%{_bindir}
-ln -s %{ruby_sitelib}/bin/b2json %{buildroot}%{_bindir}/
-ln -s %{ruby_sitelib}/bin/j2bson %{buildroot}%{_bindir}/
 
 
 #-------------------------------------------------------------------------------
@@ -73,12 +70,11 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG.md
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CONTRIBUTING.md
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/LICENSE
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/VERSION
-%{_bindir}/*
-%{ruby_sitelib}/bin/*
+%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.md
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
-%{ruby_sitelib}/gems/%{gemname}-%{version}/bin
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
 
@@ -88,6 +84,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Dec 3 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.0.0-1%{?dist}
+- New upstream version
+
 * Thu Aug 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.9.2-1%{?dist}
 - New upstream version
 

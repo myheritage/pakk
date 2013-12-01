@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mustache
-Version:        0.99.4
+Version:        0.99.5
 Release:        1%{?dist}
 Summary:        Framework-agnostic way to render logic-free views
 
@@ -102,6 +102,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Dec 3 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.99.5-1%{?dist}
+- New upstream version
+
 * Sun May 29 2011 Eric-Olivier Lamey <pakk@96b.it> - 0.99.4-1%{?dist}
 - New upstream version
 

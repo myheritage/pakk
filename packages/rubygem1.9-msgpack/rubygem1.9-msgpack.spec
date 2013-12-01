@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-msgpack
-Version:        0.5.5
+Version:        0.5.7
 Release:        1%{?dist}
 Summary:        Binary-based efficient data interchange format
 
@@ -83,6 +83,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Dec 3 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.5.7-1%{?dist}
+- New upstream version
+
 * Wed May 15 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.5.5-1%{?dist}
 - New upstream version
 

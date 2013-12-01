@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-rbtrace
-Version:        0.4.1
+Version:        0.4.2
 Release:        1%{?dist}
 Summary:        Like strace but for ruby code
 
@@ -96,6 +96,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Dec 3 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.4.2-1%{?dist}
+- New upstream version
+
 * Mon Mar 11 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.4.1-1%{?dist}
 - New upstream version
 

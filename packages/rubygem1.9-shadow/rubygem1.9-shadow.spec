@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-shadow
-Version:        2.3.1
+Version:        2.3.2
 Release:        1%{?dist}
 Summary:        Access to shadow passwords on Linux and Solaris
 
@@ -85,6 +85,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Dec 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.3.2-1%{?dist}
+- New upstream version
+
 * Tue Dec 3 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.3.1-1%{?dist}
 - New upstream version
 

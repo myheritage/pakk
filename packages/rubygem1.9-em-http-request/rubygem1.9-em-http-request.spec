@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-em-http-request
-Version:        1.0.3
+Version:        1.1.2
 Release:        1%{?dist}
 Summary:        EventMachine based, async HTTP Request client
 
@@ -26,11 +26,11 @@ BuildArch:      noarch
 BuildRequires:  ruby1.9-devel
 
 Requires:       ruby1.9
-Requires:       rubygem1.9-addressable >= 2.2.3
+Requires:       rubygem1.9-addressable >= 2.3.4
 Requires:       rubygem1.9-cookiejar
-Requires:       rubygem1.9-em-socksify
-Requires:       rubygem1.9-eventmachine >= 1.0.0
-Requires:       rubygem1.9-http_parser >= 0.5.3
+Requires:       rubygem1.9-em-socksify >= 0.3
+Requires:       rubygem1.9-eventmachine >= 1.0.3
+Requires:       rubygem1.9-http_parser >= 0.6.0
 
 %description
 Async (EventMachine) HTTP client, with support for:
@@ -95,6 +95,12 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Dec 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.1.2-1%{?dist}
+- New upstream version
+
+* Tue Jun 25 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.1.0-1%{?dist}
+- New upstream version
+
 * Tue Nov 13 2012 Eric-Olivier Lamey <pakk@96b.it> - 1.0.3-1%{?dist}
 - New upstream version
 

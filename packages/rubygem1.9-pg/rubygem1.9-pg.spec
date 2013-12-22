@@ -13,7 +13,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-pg
-Version:        0.16.0
+Version:        0.17.1
 Release:        1%{?dist}
 Summary:        Ruby interface to PostgreSQL RDBMS
 
@@ -95,6 +95,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Dec 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.17.1-1%{?dist}
+- New upstream version
+
 * Wed Jul 31 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.16.0-1%{?dist}
 - New upstream version
 

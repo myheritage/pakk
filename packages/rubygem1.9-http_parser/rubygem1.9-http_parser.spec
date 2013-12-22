@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-http_parser
-Version:        0.5.3
+Version:        0.6.0
 Release:        1%{?dist}
 Summary:        Ruby bindings to http://github.com/ry/http-parser
 
@@ -84,5 +84,8 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Dec 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.6.0-1%{?dist}
+- New upstream version
+
 * Tue Nov 13 2012 Eric-Olivier Lamey <pakk@96b.it> - 0.5.3-1%{?dist}
 - Initial package creation

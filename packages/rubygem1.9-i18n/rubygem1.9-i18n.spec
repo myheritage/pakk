@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-i18n
-Version:        0.6.5
+Version:        0.6.9
 Release:        1%{?dist}
 Summary:        New wave Internationalization support for Ruby
 
@@ -65,7 +65,6 @@ rm -rf %{buildroot}
 #-------------------------------------------------------------------------------
 %files
 %defattr(-, root, root, -)
-%doc %{ruby_sitelib}/gems/%{gemname}-%{version}/CHANGELOG.textile
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/MIT-LICENSE
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.textile
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
@@ -78,6 +77,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sun Dec 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.6.9-1%{?dist}
+- New upstream version
+
 * Thu Aug 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 0.6.5-1%{?dist}
 - New upstream version
 

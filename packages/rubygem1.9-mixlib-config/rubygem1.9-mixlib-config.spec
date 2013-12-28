@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mixlib-config
-Version:        2.0.0
+Version:        2.1.0
 Release:        1%{?dist}
 Summary:        Class based config mixin, similar to the one found in Chef
 
@@ -78,6 +78,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Dec 28 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.1.0-1%{?dist}
+- New upstream version
+
 * Sat Oct 26 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.0.0-1%{?dist}
 - New upstream version
 

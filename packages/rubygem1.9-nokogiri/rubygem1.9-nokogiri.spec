@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-nokogiri
-Version:        1.5.9
+Version:        1.6.1
 Release:        1%{?dist}
 Summary:        Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser
 
@@ -25,9 +25,11 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  ruby1.9-devel
+BuildRequires:  rubygem1.9-mini_portile >= 0.5.0
 BuildRequires:  zlib-devel
 
 Requires:       ruby1.9
+Requires:       rubygem1.9-mini_portile >= 0.5.0
 
 %description
 Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser.  Among Nokogiri's
@@ -57,13 +59,14 @@ Documentation for %{name} in rdoc and ri format.
 %install
 rm -rf %{buildroot}
 export CONFIGURE_ARGS="--with-cflags='%{optflags}'"
-gem1.9 install --local \
+export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+gem1.9 install --local --force \
   --install-dir %{buildroot}%{ruby_sitelib} \
   %{SOURCE0}
 rm -rf %{buildroot}%{ruby_sitelib}/cache
 
 pushd %{buildroot}%{ruby_sitelib}/gems/%{gemname}-%{version}
-  rm -rf .autotest .gemtest Rakefile build_all deps.rip ext tasks test test_all *.ja.rdoc
+  rm -rf .??* Gemfile Rakefile build_all dependencies.yml deps.rip ext ports tasks test test_all *.ja.rdoc
   strip lib/nokogiri/*.so
 popd
 
@@ -97,6 +100,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Sat Dec 28 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.6.1-1%{?dist}
+- New upstream version
+
 * Fri Mar 22 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.5.9-1%{?dist}
 - New upstream version
 

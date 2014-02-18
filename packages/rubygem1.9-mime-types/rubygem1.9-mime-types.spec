@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-mime-types
-Version:        1.25.1
+Version:        2.1
 Release:        1%{?dist}
 Summary:        Ruby implementation of a MIME Types information library
 
@@ -70,17 +70,23 @@ rm -rf %{buildroot}
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/Licence.rdoc
 %doc %{ruby_sitelib}/gems/%{gemname}-%{version}/README.rdoc
 %dir %{ruby_sitelib}/gems/%{gemname}-%{version}
+%{ruby_sitelib}/gems/%{gemname}-%{version}/data
 %{ruby_sitelib}/gems/%{gemname}-%{version}/lib
 %{ruby_sitelib}/specifications/%{gemname}-%{version}.gemspec
 
 %files doc
 %doc %{ruby_sitelib}/doc/%{gemname}-%{version}
 %{ruby_sitelib}/gems/%{gemname}-%{version}/Contributing.rdoc
+%{ruby_sitelib}/gems/%{gemname}-%{version}/History-Types.rdoc
 %{ruby_sitelib}/gems/%{gemname}-%{version}/docs
+%{ruby_sitelib}/gems/%{gemname}-%{version}/support
 
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Jan 28 2014 Eric-Olivier Lamey <pakk@96b.it> - 2.1-1%{?dist}
+- New upstream version
+
 * Sun Dec 1 2013 Eric-Olivier Lamey <pakk@96b.it> - 1.25.1-1%{?dist}
 - New upstream version
 

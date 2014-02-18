@@ -12,7 +12,7 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-bson
-Version:        2.0.0
+Version:        2.2.0
 Release:        1%{?dist}
 Summary:        Ruby driver for MongoDB
 
@@ -84,6 +84,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Jan 28 2014 Eric-Olivier Lamey <pakk@96b.it> - 2.2.0-1%{?dist}
+- New upstream version
+
 * Tue Dec 3 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.0.0-1%{?dist}
 - New upstream version
 

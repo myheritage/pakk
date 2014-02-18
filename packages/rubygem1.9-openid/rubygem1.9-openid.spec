@@ -12,12 +12,12 @@
 # Main package
 #-----------------------------------------------------------------------------
 Name:           rubygem1.9-openid
-Version:        2.2.3
+Version:        2.4.0
 Release:        1%{?dist}
 Summary:        Library for consuming and serving OpenID identities
 
 Group:          Development/Languages
-License:        X
+License:        Ruby
 URL:            http://github.com/openid/ruby-openid
 Source0:        http://rubygems.org/downloads/%{gemname}-%{version}.gem
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -80,6 +80,9 @@ rm -rf %{buildroot}
 
 #-------------------------------------------------------------------------------
 %changelog
+* Tue Jan 28 2014 Eric-Olivier Lamey <pakk@96b.it> - 2.4.0-1%{?dist}
+- New upstream version
+
 * Fri Feb 15 2013 Eric-Olivier Lamey <pakk@96b.it> - 2.2.3-1%{?dist}
 - New upstream version
 
